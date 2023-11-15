@@ -1,22 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-//image
-import signupImg from "../../../public/sign_up.svg";
 
 //css
 import signUpStyles from "./signUp.module.css";
 
 const SignUp = () => {
   const [company, setCompany] = useState(false);
+  const [hasAccount, setHasAccount] = useState(false);
 
   return (
     <>
-      {/* <Image src={signupImg} alt="signup" className={signUpStyles.signUpImg}/> */}
       <div className={signUpStyles.container}>
-        <p className={signUpStyles.heading}>Create an account</p>
-        <div className={signUpStyles.buttons}>
+        <h2 className={signUpStyles.heading}>
+          {hasAccount
+            ? `${company ? "Company" : "Individual"} Login`
+            : "Create an account"}
+        </h2>
+        <div className={`${signUpStyles.buttons} ${signUpStyles.mbMedium}`}>
           <button
             className={`${
               company ? signUpStyles.activeBtn : signUpStyles.inactiveBtn
@@ -34,7 +35,7 @@ const SignUp = () => {
             Personal
           </button>
         </div>
-        {
+        {!hasAccount && (
           <div className={signUpStyles.personalLogin__form}>
             <div className={signUpStyles.personalLogin__fields}>
               <input
@@ -113,20 +114,61 @@ const SignUp = () => {
               />
             </div>
           </div>
-        }
+        )}
+
+        {hasAccount && (
+          <div className={signUpStyles.personalLogin__form}>
+            <div className={signUpStyles.personalLogin__fields}>
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                id="new password"
+                className={signUpStyles.inputfields}
+              />
+            </div>
+            <div className={signUpStyles.personalLogin__fields}>
+              <input
+                type="password"
+                name="password"
+                autoComplete="off"
+                id="new password"
+                placeholder="Password"
+                className={signUpStyles.inputfields}
+              />
+            </div>
+          </div>
+        )}
 
         <div className={signUpStyles.registerBtn}>
-          <button className={signUpStyles.activeBtn}>Register</button>
+          {hasAccount ? (
+            <button className={signUpStyles.activeBtn}>Login</button>
+          ) : (
+            <button className={signUpStyles.activeBtn}>Register</button>
+          )}
         </div>
         <div className={signUpStyles.loginBtn}>
-          <h3>Already have an account ?</h3>
+          <h3>
+            {hasAccount
+              ? "Don't have an Account ?"
+              : "Already have an account ?"}
+          </h3>
           <div className={signUpStyles.buttons}>
-            <button
-              className={`${signUpStyles.activeBtn}`}
-              onClick={() => console.log("slfdslfd")}
-            >
-              Login
-            </button>
+            {hasAccount ? (
+              <button
+                className={`${signUpStyles.activeBtn}`}
+                onClick={() => setHasAccount(false)}
+              >
+                Register
+              </button>
+            ) : (
+              <button
+                className={`${signUpStyles.activeBtn}`}
+                onClick={() => setHasAccount(true)}
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
       </div>

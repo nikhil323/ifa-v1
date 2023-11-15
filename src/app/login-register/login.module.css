@@ -7,8 +7,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 100vh;
     background-color: #85a8c5;
-    border: 1px solid #ccc;
     margin-right: 1rem;
+}
+
+.signUpImg {
+    padding-top: 2rem;
 }
 
 .horizontalLine {
