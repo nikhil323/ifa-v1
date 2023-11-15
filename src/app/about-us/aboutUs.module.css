@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #85a8c5;
+    height: 100vh;
+}
+
+.aboutImage {
+    width: 100%;
+}
+
+.content {
+    width: 50%;
+    backdrop-filter: blur(8px);
+    padding-right: 2rem;
+    color: #3f3d56;
+}
+
+.headingText {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.aboutText {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}

@@ -1,95 +1,121 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import LinkedInCard from "@/components/LinkedInCard/linkedInCard";
+import pageStyles from "./page.module.css";
+import Carousel from "@/components/Carousel/Carousel";
+import TrendingJob from "@/components/DetailsCard/TrendingJob";
+
+//images
+import image1 from "../../public/images/contract.svg";
+import image2 from "../../public/images/graduation.svg";
+import image3 from "../../public/images/hire.svg";
+import image4 from "../../public/images/online_cv.svg";
+import image5 from "../../public/images/teacher.svg";
+import InfoCard from "@/components/InfoCard/InfoCard";
 
 export default function Home() {
+  const latestInterns = [
+    {
+      id: 1,
+      imageUrl: image1,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/1",
+    },
+    {
+      id: 2,
+      imageUrl: image2,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/2",
+    },
+    {
+      id: 3,
+      imageUrl: image3,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/3",
+    },
+    {
+      id: 4,
+      imageUrl: image4,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/4",
+    },
+    {
+      id: 5,
+      imageUrl: image5,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/5",
+    },
+    {
+      id: 6,
+      imageUrl: image1,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/1",
+    },
+  ];
+
+  const inDemandInterns = [
+    {
+      id: 5,
+      imageUrl: image5,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/5",
+    },
+    {
+      id: 1,
+      imageUrl: image1,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/1",
+    },
+    {
+      id: 2,
+      imageUrl: image2,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/2",
+    },
+    {
+      id: 3,
+      imageUrl: image3,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/3",
+    },
+    {
+      id: 4,
+      imageUrl: image4,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/4",
+    },
+    {
+      id: 6,
+      imageUrl: image2,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/2",
+    },
+    {
+      id: 7,
+      imageUrl: image3,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, temporibus.",
+      detailLink: "/details/3",
+    },
+  ];
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <>
+      <div className={pageStyles.main}>
+        <Carousel />
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      <TrendingJob title={"Latest Interns"} internships={latestInterns} />
+      <TrendingJob title={"Most In Demand"} internships={inDemandInterns} />
+      <InfoCard />
+    </>
+  );
 }
