@@ -1,4 +1,4 @@
-import LinkedInCard from "@/components/LinkedInCard/linkedInCard";
+import LinkedInCard from "@/components/PostCard/PostCard";
 import pageStyles from "./page.module.css";
 import Carousel from "@/components/Carousel/Carousel";
 import TrendingJob from "@/components/DetailsCard/TrendingJob";

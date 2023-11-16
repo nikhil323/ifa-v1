@@ -1,16 +1,17 @@
 .filterContainer {
-    position:fixed;
     width: 25%;
     padding: .5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 100vh;
+    /* height: 100vh; */
     padding-bottom: 0;
     display: inline-block;
-    background-color: #d4d8d7;
+    background-color: #fff;
     border-radius: .8rem;
     border: 1px solid #ccc;
     margin-left: 1rem;
-    top: 1.5rem;
+    font-size: 1.6rem;
+    vertical-align: top;
+    margin-top: 8rem;
 }
 
 .filterWrapper {
@@ -112,7 +113,7 @@
     border-radius: 4px;
     padding: 8px 15px;
     cursor: pointer;
-    font-size: larger;
+    font-size: 1.4rem;
 }
 
 /* Horizontal Line Styles */
@@ -168,6 +169,7 @@
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 18px;
+    font-size: 1.4rem;
 }
 
 .rangeStyle {

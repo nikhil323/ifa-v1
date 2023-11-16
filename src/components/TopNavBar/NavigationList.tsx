@@ -30,7 +30,6 @@ const NavigationList = () => {
         All Posts
       </Link>
       <Link
-        scroll={false}
         href="/about-us"
         className={`${topStyle.navigationLink} ${
           pathname.startsWith("/about-us") ? `${topStyle.activeLink}` : ""
@@ -39,7 +38,6 @@ const NavigationList = () => {
         About Us
       </Link>
       <Link
-        scroll={false}
         href="/contact-us"
         className={`${topStyle.navigationLink} ${
           pathname.startsWith("/contact-us") ? `${topStyle.activeLink}` : ""
@@ -48,7 +46,6 @@ const NavigationList = () => {
         Contact Us
       </Link>
       <Link
-        scroll={false}
         href="/login-register"
         className={`${topStyle.navigationLink} ${
           pathname.startsWith("/login-register") ? `${topStyle.activeLink}` : ""
