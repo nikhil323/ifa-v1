@@ -1,4 +1,3 @@
-import LinkedInCard from "@/components/PostCard/PostCard";
 import pageStyles from "./page.module.css";
 import Carousel from "@/components/Carousel/Carousel";
 import TrendingJob from "@/components/DetailsCard/TrendingJob";
@@ -11,7 +10,28 @@ import image4 from "../../public/images/online_cv.svg";
 import image5 from "../../public/images/teacher.svg";
 import InfoCard from "@/components/InfoCard/InfoCard";
 
-export default function Home() {
+async function getLatestVacancy() {
+  const res = await fetch("https://paban.pythonanywhere.com/latest-vacancies");
+
+  if (res.ok) {
+    return res.json();
+  }
+}
+
+async function getMostInDemand() {
+  const res = await fetch(
+    "https://paban.pythonanywhere.com/max-applied-company"
+  );
+
+  if (res.ok) {
+    return res.json();
+  }
+}
+
+export default async function Home() {
+  const latestInterns1 = await getLatestVacancy();
+
+  const inDemandInterns1 = await getMostInDemand();
   const latestInterns = [
     {
       id: 1,
@@ -108,6 +128,10 @@ export default function Home() {
       detailLink: "/details/3",
     },
   ];
+
+  console.log("latest---->", latestInterns1);
+  console.log("most in demand ---->", inDemandInterns);
+
   return (
     <>
       <div className={pageStyles.main}>

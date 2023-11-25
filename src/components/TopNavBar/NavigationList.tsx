@@ -71,6 +71,19 @@ const NavigationList = () => {
 
       {orgId && (
         <Link
+          href="/posted-vacancy"
+          className={`${topStyle.navigationLink} ${
+            pathname.startsWith("/posted-vacancy")
+              ? `${topStyle.activeLink}`
+              : ""
+          }`}
+        >
+          View Vacancy
+        </Link>
+      )}
+
+      {orgId && (
+        <Link
           href="/org-profile"
           className={`${topStyle.navigationLink} ${
             pathname.startsWith("/org-profile") ? `${topStyle.activeLink}` : ""

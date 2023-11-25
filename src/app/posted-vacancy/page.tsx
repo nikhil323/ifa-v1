@@ -5,16 +5,16 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 //image
-import addPosts from "../../../public/images/add_post.svg";
+import viewPostsImg from "../../../public/images/view_posts.svg";
 
 //css styles
-import vancancyStyles from "./vacancy.module.css";
+import vancancyStyles from "./postedVacancy.module.css";
 
 //components
-import VacancyForm from "./VacancyForm";
+import VacancyList from "./VacancyList";
 import { getUserStatus } from "../utils/utilFunction";
 
-const AddVacancy = () => {
+const PostedVacancy = () => {
   const router = useRouter();
   const isAuth = getUserStatus();
   //check if use trying to access the route is org or not
@@ -26,13 +26,13 @@ const AddVacancy = () => {
   return (
     <div className={vancancyStyles.container}>
       <Image
-        src={addPosts}
+        src={viewPostsImg}
         alt="add post"
         className={vancancyStyles.profileImg}
       />
-      <VacancyForm />
+      <VacancyList />
     </div>
   );
 };
 
-export default AddVacancy;
+export default PostedVacancy;

@@ -182,3 +182,20 @@ export const addVacancy = async (body: any) => {
     return data;
   }
 };
+
+//get perticular organization vacancy
+export const getOrgVacancy = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  const res = await fetch(`${baseUrl}/vacancy/vacancy-submit`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+    },
+  });
+
+  const data = await res.json();
+  if (res?.status === 200) {
+    return data;
+  }
+};

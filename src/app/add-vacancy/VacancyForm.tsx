@@ -29,9 +29,10 @@ const VacancyForm = () => {
     location: "",
     requirements: "",
     contact_email: "",
+    application_deadline: "",
     contact_phone: "",
     job_type: "",
-    photo: null,
+    banner_img: null,
   };
 
   //error state
@@ -55,7 +56,7 @@ const VacancyForm = () => {
       ...formData,
       [name]: file,
     });
-    if (name === "photo") {
+    if (name === "banner_img") {
       const prevUrl = URL.createObjectURL(file);
       setSelectedFile(prevUrl);
     }
@@ -67,7 +68,7 @@ const VacancyForm = () => {
     const formFields = new FormData();
 
     for (let name in formData) {
-      if (name === "photo" && typeof formData[name] === "string") {
+      if (name === "banner_img" && typeof formData[name] === "string") {
       } else {
         formFields.append(name, formData[name]);
       }
@@ -98,7 +99,7 @@ const VacancyForm = () => {
               }
               width={150}
               height={150}
-              alt="vacancy photo"
+              alt="banner image of vacancy"
               className={vacancyStyles?.profileImgPrev}
             />
           </div>
@@ -206,15 +207,15 @@ const VacancyForm = () => {
               htmlFor="vacancy-img"
               className={`${vacancyStyles.fileFieldStyle} ${vacancyStyles.vacancyImg}`}
             >
-              {formData?.photo?.name
-                ? formData?.photo?.name?.substring(0, 10) + "..."
+              {formData?.banner_img?.name
+                ? formData?.banner_img?.name?.substring(0, 10) + "..."
                 : "Upload Vacancy Photo"}
               <input
                 id="vacancy-img"
                 type="file"
                 required
                 placeholder="Vacancy image"
-                name="photo"
+                name="banner_img"
                 onChange={handleChangeFiles}
               />
             </label>

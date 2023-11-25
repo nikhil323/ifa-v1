@@ -286,6 +286,12 @@ const OrgForm = () => {
         </div>
       </form>
       <div>
+        <Link href="/add-vacancy" className={orgStyles.addVacancyBtn}>
+          Add Vacancy
+        </Link>
+        <Link href="/posted-vacancy" className={orgStyles.addVacancyBtn}>
+          View Posted Vacancy
+        </Link>
         <button
           name="logout"
           className={orgStyles.submitBtn}
@@ -300,9 +306,6 @@ const OrgForm = () => {
         >
           Logout
         </button>
-        <Link href="/add-vacancy" className={orgStyles.addVacancyBtn}>
-          Add Vacancy
-        </Link>
       </div>
       {showErrorMsg && (
         <PopUpMsg

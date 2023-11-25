@@ -4,15 +4,8 @@ import styles from "./styles.module.css";
 
 import HomePageCard from "./DetailsCard";
 
-interface internships {
-  id: number;
-  imageUrl: any;
-  description: string;
-  detailLink: string;
-}
-
 interface trendingJobsProps {
-  internships: internships[];
+  internships: any[];
   title: string;
 }
 

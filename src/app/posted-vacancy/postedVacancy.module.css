@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    background-color: #85a8c5;
+}
+
+.profileImg {
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    top: 13%;
+    left: -15%;
+}
+
+.content {
+    position: absolute;
+    top: 10%;
+    color: #3f3d56;
+    margin: 2rem;
+    right: 0;
+    width: 37%;
+    font-size: 1.4rem;
+}
+
+.inner::-webkit-scrollbar {
+    width: 5px;
+}
+
+.inner::-webkit-scrollbar-track {
+    background: #d4d8d7;
+}
+
+.inner::-webkit-scrollbar-thumb {
+    background-color: #8e9694;
+    border-radius: 20px;
+}
+
+.title {
+    margin-bottom: 1rem;
+}
+
+.inner {
+    height: 50rem;
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+.listItems {
+    margin: 1rem;
+    border: 1px solid #fff;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.itemTitle {
+    margin-bottom: 1rem;
+}
+
+.viewDetail,
+.viewDetail:active,
+.viewDetail:visited {
+    margin-top: 1rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #3f3d56;
+}
+
+.viewDetail:hover {
+    color: #fff;
+}
