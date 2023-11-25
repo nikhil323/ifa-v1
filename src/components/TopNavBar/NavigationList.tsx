@@ -9,6 +9,8 @@ import topStyle from "./topNavBar.module.css";
 
 const NavigationList = () => {
   const pathname = usePathname();
+  const studentId = localStorage.getItem("studentId");
+  const orgId = localStorage.getItem("orgId");
   return (
     <nav className={topStyle.navigationLinkContainer}>
       <Link
@@ -45,14 +47,51 @@ const NavigationList = () => {
       >
         Contact Us
       </Link>
-      <Link
-        href="/login-register"
-        className={`${topStyle.navigationLink} ${
-          pathname.startsWith("/login-register") ? `${topStyle.activeLink}` : ""
-        }`}
-      >
-        Login/Register
-      </Link>
+      {studentId && (
+        <Link
+          href="/std-profile"
+          className={`${topStyle.navigationLink} ${
+            pathname.startsWith("/std-profile") ? `${topStyle.activeLink}` : ""
+          }`}
+        >
+          Profile
+        </Link>
+      )}
+
+      {orgId && (
+        <Link
+          href="/add-vacancy"
+          className={`${topStyle.navigationLink} ${
+            pathname.startsWith("/add-vacancy") ? `${topStyle.activeLink}` : ""
+          }`}
+        >
+          Add Vacancy
+        </Link>
+      )}
+
+      {orgId && (
+        <Link
+          href="/org-profile"
+          className={`${topStyle.navigationLink} ${
+            pathname.startsWith("/org-profile") ? `${topStyle.activeLink}` : ""
+          }`}
+        >
+          Profile
+        </Link>
+      )}
+
+      {!studentId && !orgId && (
+        <Link
+          href="/login-register"
+          className={`${topStyle.navigationLink} ${
+            pathname.startsWith("/login-register")
+              ? `${topStyle.activeLink}`
+              : ""
+          }`}
+        >
+          Login/Register
+        </Link>
+      )}
     </nav>
   );
 };

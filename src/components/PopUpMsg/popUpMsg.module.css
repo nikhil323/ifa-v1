@@ -1,0 +1,37 @@
+.message {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+/* .darken_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+} */
+
+.message.show {
+    display: block;
+    opacity: 1;
+}
+
+.successText {
+    color: green;
+}
+
+.errorText {
+    color: red;
+}

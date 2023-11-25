@@ -6,6 +6,8 @@ import contactUs from "../../../public/images/contact_us.svg";
 
 //css
 import contactUsStyles from "./contactUs.module.css";
+
+//form
 import ContactUsForm from "./ContactUsForm";
 
 const ContactUs = () => {
