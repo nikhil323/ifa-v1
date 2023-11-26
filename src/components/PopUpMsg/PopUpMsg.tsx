@@ -14,7 +14,6 @@ export interface apiRes {
 }
 
 const PopUpMsg: React.FC<any> = ({ loginRes, setLoginRes }) => {
-  console.log("login res", loginRes);
   const status = loginRes?.status;
   const msg = loginRes?.msg;
   const [displayMessage, setDisplayMessage] = useState(false);

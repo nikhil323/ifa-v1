@@ -225,7 +225,6 @@ const ProfileForm = () => {
               value={formData?.phone_no}
               onChange={(e) => handleInputChange(e, formData, setFormData)}
               onBlur={() => {
-                console.log("phone length is", formData?.phone_no?.length);
                 if (formData?.phone_no?.length > 10) {
                   console.log("setting error");
                   setErrors({

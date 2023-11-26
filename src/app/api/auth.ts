@@ -78,7 +78,7 @@ export const registerOrganization = async (body: any) => {
   });
   const data = await res.json();
   if (res?.status === 201) {
-    localStorage.setItem("orgId", data?.id);
+    localStorage.setItem("orgId", data?.organization_id);
     return data;
   }
 };
@@ -160,7 +160,9 @@ export const updateOrganization = async (body: any, id: string) => {
       body: body,
     }
   );
+  console.log("the update res", res);
   const data = await res.json();
+  console.log("the update data", data);
 
   if (res?.status === 200) {
     return data;
@@ -177,8 +179,6 @@ export const addVacancy = async (body: any) => {
     body: body,
   });
   const data = await res.json();
-  console.log("data in create vacancy", data);
-  console.log("res in create vacancy", res);
   if (res?.status === 201) {
     return data;
   }

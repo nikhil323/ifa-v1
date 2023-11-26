@@ -9,7 +9,6 @@ import Dialog from "@/components/Dialog/Dialog";
 const ApplyBtn = () => {
   const stdId = localStorage.getItem("studentId");
   const orgId = localStorage.getItem("orgId");
-  console.log("student id", stdId);
   const [showMessage, setShowMessage] = useState(false);
   const initialMsg = {
     status: "",
