@@ -18,9 +18,9 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
           return (
             <HomePageCard
               key={jobs?.id}
-              imageUrl={jobs?.imageUrl}
+              imageUrl={jobs?.banner_img}
               description={jobs?.description}
-              detailLink={jobs?.detailLink}
+              id={jobs?.id}
             />
           );
         })}

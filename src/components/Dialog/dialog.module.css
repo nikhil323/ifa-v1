@@ -1,0 +1,64 @@
+.container {
+    font-size: 1.6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #40c2a6;
+    width: 50rem;
+    border-radius: .8rem;
+}
+
+.inner {
+    background-color: #fff;
+    padding: 1rem;
+    /* border-radius: 4px; */
+    border-radius: .8rem;
+}
+
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #555;
+}
+
+.confirmText {
+    /* vertical-align: bottom; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: .5rem;
+    font-weight: 700;
+    color:#40c2a6;
+}
+
+.crossBtn {
+    text-align: flex-end;
+    font-size: 3rem;
+    border-bottom: 1px solid #555;
+    border: none;
+    cursor: pointer;
+}
+
+.dialogMsg {
+    padding: 2rem;
+    text-align: center;
+}
+
+.bottomSection {
+    border-top: 1px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.okBtn {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.okBtn:hover {
+    background-color: #40c2a6;
+}

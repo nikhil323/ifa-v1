@@ -14,19 +14,22 @@ export interface apiRes {
 }
 
 const PopUpMsg: React.FC<any> = ({ loginRes, setLoginRes }) => {
-  const { status, msg } = loginRes;
-  const [displayMessage, setDisplayMessage] = useState(true);
+  console.log("login res", loginRes);
+  const status = loginRes?.status;
+  const msg = loginRes?.msg;
+  const [displayMessage, setDisplayMessage] = useState(false);
 
   useEffect(() => {
+    setDisplayMessage(true);
     // if (status === 200 || status === "success") {
     // setDisplayMessage(true);
     // console.log("the-->");
     setTimeout(() => {
-      setDisplayMessage(false);
       setLoginRes(null);
+      setDisplayMessage(false);
     }, 1500);
     // }
-  }, [status, displayMessage]);
+  }, [status]);
 
   return (
     <div className={popUpStyles.darken_background}>
@@ -56,6 +59,9 @@ const PopUpMsg: React.FC<any> = ({ loginRes, setLoginRes }) => {
         )}
         {status === "updated" && (
           <span className={popUpStyles.successText}>{msg}</span>
+        )}
+        {status === "login-to-proceed" && (
+          <span className={popUpStyles.errorText}>{msg}</span>
         )}
       </div>
     </div>
