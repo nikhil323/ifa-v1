@@ -12,7 +12,9 @@ import InfoCard from "@/components/InfoCard/InfoCard";
 import { baseUrl } from "./api/auth";
 
 async function getLatestVacancy() {
-  const res = await fetch(`${baseUrl}/latest-vacancies`);
+  const res = await fetch(`${baseUrl}/latest-vacancies`, {
+    next: { revalidate: 0 },
+  });
 
   if (res.ok) {
     return res.json();
@@ -20,7 +22,9 @@ async function getLatestVacancy() {
 }
 
 async function getMostInDemand() {
-  const res = await fetch(`${baseUrl}/max-applied-company`);
+  const res = await fetch(`${baseUrl}/max-applied-company`, {
+    next: { revalidate: 0 },
+  });
 
   if (res.ok) {
     return res.json();
