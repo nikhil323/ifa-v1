@@ -160,9 +160,7 @@ export const updateOrganization = async (body: any, id: string) => {
       body: body,
     }
   );
-  console.log("the update res", res);
   const data = await res.json();
-  console.log("the update data", data);
 
   if (res?.status === 200) {
     return data;
@@ -197,6 +195,24 @@ export const getOrgVacancy = async () => {
 
   const data = await res.json();
   if (res?.status === 200) {
+    return data;
+  }
+};
+
+//apply vacancy
+export const applyVacancy = async (body: any) => {
+  const accessToken = localStorage.getItem("accessToken");
+  const res = await fetch(`${baseUrl}/application/apply-application`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+
+  if (res?.status === 201) {
     return data;
   }
 };

@@ -14,7 +14,7 @@
     margin: 0;
     padding: 0;
     display: flex;
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: hidden;
     background-color: #85a8c5;
 }

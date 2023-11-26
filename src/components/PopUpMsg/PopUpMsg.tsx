@@ -62,6 +62,9 @@ const PopUpMsg: React.FC<any> = ({ loginRes, setLoginRes }) => {
         {status === "login-to-proceed" && (
           <span className={popUpStyles.errorText}>{msg}</span>
         )}
+        {status === "applied" && (
+          <span className={popUpStyles.successText}>{msg}</span>
+        )}
       </div>
     </div>
   );

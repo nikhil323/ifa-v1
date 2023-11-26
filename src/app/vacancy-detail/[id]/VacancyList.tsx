@@ -4,6 +4,7 @@ import React from "react";
 import vacancyListStyle from "./vacancyDetail.module.css";
 import Link from "next/link";
 import ApplyBtn from "./ApplyBtn";
+import Image from "next/image";
 
 const VacancyList = ({ vacancy }: any) => {
   console.log("vacancy in list", vacancy);
@@ -12,10 +13,12 @@ const VacancyList = ({ vacancy }: any) => {
       <article className={vacancyListStyle.inner}>
         <div className={vacancyListStyle.card}>
           <div className={vacancyListStyle.header}>
-            <img
+            <Image
               src={vacancy?.company_icon}
               alt={vacancy?.organization?.organization_name}
               className={vacancyListStyle.companyLogo}
+              // width={250}
+              // height={250}
             />
             <div className={vacancyListStyle.companyInfo}>
               <h2 className={vacancyListStyle.company__name}>
@@ -40,7 +43,12 @@ const VacancyList = ({ vacancy }: any) => {
             <p className={vacancyListStyle.summary}>{vacancy?.description}</p>
           </div>
           <div className={vacancyListStyle.content__image}>
-            <img alt={vacancy?.job_type} src={vacancy?.banner_img} />
+            <Image
+              alt={vacancy?.job_type}
+              src={vacancy?.banner_img}
+              width={630}
+              height={280}
+            />
           </div>
           <div className={vacancyListStyle.footer}>
             <div>
@@ -59,7 +67,7 @@ const VacancyList = ({ vacancy }: any) => {
                 Deadline : {vacancy?.application_deadline}
               </h3>
             </div>
-            <ApplyBtn />
+            <ApplyBtn id={vacancy?.id} />
           </div>
         </div>
       </article>
@@ -82,7 +90,7 @@ const VacancyList = ({ vacancy }: any) => {
         </div>
         <div className={vacancyListStyle.details}>
           <p>Salary: {vacancy.salary}</p>
-          <p>Duration: {vacancy.duration}</p>
+          <p>Duration: {vacancy.duration} months</p>
           <p>Requirements: {vacancy.requirements}</p>
           <p>Job Type: {vacancy.job_type}</p>
           <p>Contact Email: {vacancy.contact_email}</p>
