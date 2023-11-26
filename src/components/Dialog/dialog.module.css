@@ -19,7 +19,7 @@
 .topSection {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #555;
+    /* border-bottom: 1px solid #555; */
 }
 
 .confirmText {
@@ -35,7 +35,7 @@
 .crossBtn {
     text-align: flex-end;
     font-size: 3rem;
-    border-bottom: 1px solid #555;
+    /* border-bottom: 1px solid #555; */
     border: none;
     cursor: pointer;
 }
@@ -46,7 +46,7 @@
 }
 
 .bottomSection {
-    border-top: 1px solid #555;
+    /* border-top: 1px solid #555; */
     display: flex;
     justify-content: center;
     align-items: center;
