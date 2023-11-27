@@ -36,9 +36,7 @@ const ContactUsForm = () => {
         </div>
         <input type="submit" value="submit" className={contactUsStyles.submitBtn}/>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid vitae
-          mollitia dolores ipsum nam accusamus perspiciatis placeat magni, error
-          molestias.
+          Feel free to contact us. We will try to get back within 2-3 working days.
         </p>
       </form>
     </div>

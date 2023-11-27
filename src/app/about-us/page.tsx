@@ -16,23 +16,16 @@ const AboutUs = () => {
         className={aboutUsStyles.aboutImage}
       />
       <div className={aboutUsStyles.content}>
-        <h3 className={aboutUsStyles.headingText}>some heading</h3>
+        <h3 className={aboutUsStyles.headingText}>About Us</h3>
         <p className={aboutUsStyles.aboutText}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
-          consequuntur libero fugiat facere perspiciatis delectus accusamus,
-          iure incidunt aperiam nostrum! Eaque tempora corporis at. Ullam magni
-          magnam quisquam incidunt fugiat est officiis facilis, nulla odio
-          expedita atque natus accusantium ut fugit excepturi mollitia placeat
-          doloribus nihil culpa tenetur eum. Nihil?
+          Pathfinder is a online platform for internship-seekers who want to do internship and organizations who can add internship 
+          opportunity available in their organization.
         </p>
-        <h3 className={aboutUsStyles.headingText}>some heading</h3>
+        <h3 className={aboutUsStyles.headingText}>Vision & Objectives</h3>
         <p className={aboutUsStyles.aboutText}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
-          consequuntur libero fugiat facere perspiciatis delectus accusamus,
-          iure incidunt aperiam nostrum! Eaque tempora corporis at. Ullam magni
-          magnam quisquam incidunt fugiat est officiis facilis, nulla odio
-          expedita atque natus accusantium ut fugit excepturi mollitia placeat
-          doloribus nihil culpa tenetur eum. Nihil?
+          Primary goal of Pathfinder is to provide simple and intuitive user experience and opportunities.
+          We plan to extend capabilities of Pathfinder by adding counselling, job opportunities and make it a informative
+          platform for scholars, students, professionals and organizations.
         </p>
       </div>
     </div>
