@@ -211,8 +211,11 @@ export const applyVacancy = async (body: any) => {
     body: JSON.stringify(body),
   });
   const data = await res.json();
+  console.log("the res", res);
 
   if (res?.status === 201) {
     return data;
+  } else if (res?.status === 400) {
+    return res?.status;
   }
 };

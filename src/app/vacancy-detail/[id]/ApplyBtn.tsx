@@ -59,7 +59,7 @@ const ApplyBtn = ({ id }: any) => {
       };
       const res = await applyVacancy(body);
       setLoading(false);
-      if (res) {
+      if (res !== 400) {
         setShowSuccessMsg(true);
         setSuccessMsg({
           status: "applied",
@@ -69,6 +69,11 @@ const ApplyBtn = ({ id }: any) => {
           router.push("/");
         }, 2000);
       } else {
+        setShowMessage(true);
+        setMessage({
+          status: "already-applied",
+          msg: "You have already applied in this vacancy.",
+        });
         setShowSuccessMsg(false);
       }
     }

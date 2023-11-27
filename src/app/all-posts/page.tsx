@@ -5,12 +5,24 @@ import RSidebar from "@/components/RSidebar/RSidebar";
 
 //css
 import postStyles from "./allPost.module.css";
+import { baseUrl } from "../api/auth";
 
-const AllPosts = () => {
+async function getAllVacancy() {
+  const res = await fetch(`${baseUrl}/vacancy/public-vacancy`, {
+    next: { revalidate: 0 },
+  });
+
+  if (res.ok) {
+    return res.json();
+  }
+}
+
+const AllPosts = async () => {
+  const allVacancies = await getAllVacancy();
   return (
     <div className={`${postStyles.container}`}>
       <LSidebar />
-      <LinkedInCard />
+      <LinkedInCard vacancies={allVacancies} />
       <RSidebar />
     </div>
   );

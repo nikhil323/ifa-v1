@@ -65,6 +65,9 @@ const PopUpMsg: React.FC<any> = ({ loginRes, setLoginRes }) => {
         {status === "applied" && (
           <span className={popUpStyles.successText}>{msg}</span>
         )}
+        {status === "already-applied" && (
+          <span className={popUpStyles.errorText}>{msg}</span>
+        )}
       </div>
     </div>
   );

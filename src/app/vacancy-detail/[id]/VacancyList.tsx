@@ -8,17 +8,22 @@ import Image from "next/image";
 
 const VacancyList = ({ vacancy }: any) => {
   console.log("vacancy in list", vacancy);
+  console.log("the imgUrl--->", vacancy?.banner_img);
+
   return (
     <div className={vacancyListStyle.container}>
       <article className={vacancyListStyle.inner}>
         <div className={vacancyListStyle.card}>
           <div className={vacancyListStyle.header}>
             <Image
-              src={vacancy?.company_icon}
+              src={
+                vacancy?.organization?.photo ??
+                "https://via.placeholder.com/150"
+              }
               alt={vacancy?.organization?.organization_name}
               className={vacancyListStyle.companyLogo}
-              // width={250}
-              // height={250}
+              width={100}
+              height={250}
             />
             <div className={vacancyListStyle.companyInfo}>
               <h2 className={vacancyListStyle.company__name}>
@@ -45,7 +50,7 @@ const VacancyList = ({ vacancy }: any) => {
           <div className={vacancyListStyle.content__image}>
             <Image
               alt={vacancy?.job_type}
-              src={vacancy?.banner_img}
+              src={vacancy?.banner_img ?? "https://via.placeholder.com/630x280"}
               width={630}
               height={280}
             />
@@ -76,13 +81,13 @@ const VacancyList = ({ vacancy }: any) => {
           <h2 className={vacancyListStyle.industryName}>
             {vacancy.organization.industry}
           </h2>
-          <p>Phone: {vacancy.organization.phone_no}</p>
-          <p>Alt Phone: {vacancy.organization.alt_phone_no}</p>
+          <p>Phone: {vacancy?.organization?.phone_no}</p>
+          <p>Alt Phone: {vacancy?.organization?.alt_phone_no}</p>
           <Link
-            href={vacancy.organization.website}
+            href={vacancy?.organization?.website ?? "#"}
             className={vacancyListStyle.industryWebsite}
           >
-            Website: {vacancy.organization.website}
+            Website: {vacancy?.organization?.website}
           </Link>
           <p>
             Verified Company: {vacancy.organization.is_verified ? "Yes" : "No"}
