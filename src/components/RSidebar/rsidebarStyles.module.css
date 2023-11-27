@@ -9,3 +9,22 @@
     padding: .5rem;
     font-size: 1.6rem;
 }
+
+.inner {
+    padding: 2rem;
+}
+
+.title {
+    color: #52ab98;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.points {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.points li {
+    margin-bottom: 1rem;
+}
