@@ -10,7 +10,7 @@ const Footer = () => {
       <div className={footerStyles.footerContainer}>
         <div className={footerStyles.platform}>
           <h2 className={footerStyles.platformText}>
-            Path Finder, begin your professional journey&#174;
+            Path Finder, begin your professional journey...&#174;
           </h2>
         </div>
         {/* <h3 className={footerStyles.mb_medium}>Helpful Links</h3> */}
@@ -29,9 +29,9 @@ const Footer = () => {
           <p>+977 54312</p>
         </div>
         <div className={footerStyles.links}>
-          <Link href="facebook.com">Facebook</Link>
-          <Link href="linkedin.com">Linked In</Link>
-          <Link href="twitter.com">Twitter</Link>
+          <Link href="https://facebook.com" target="blank">Facebook</Link>
+          <Link href="https://linkedin.com" target="blank">Linked In</Link>
+          <Link href="https://twitter.com" target="blank">Twitter</Link>
         </div>
       </div>
       <div className={footerStyles.copyright}>
