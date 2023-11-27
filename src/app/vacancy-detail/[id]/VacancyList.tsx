@@ -4,18 +4,26 @@ import React from "react";
 import vacancyListStyle from "./vacancyDetail.module.css";
 import Link from "next/link";
 import ApplyBtn from "./ApplyBtn";
+import Image from "next/image";
 
 const VacancyList = ({ vacancy }: any) => {
   console.log("vacancy in list", vacancy);
+  console.log("the imgUrl--->", vacancy?.banner_img);
+
   return (
     <div className={vacancyListStyle.container}>
       <article className={vacancyListStyle.inner}>
         <div className={vacancyListStyle.card}>
           <div className={vacancyListStyle.header}>
-            <img
-              src={vacancy?.company_icon}
+            <Image
+              src={
+                vacancy?.organization?.photo ??
+                "https://via.placeholder.com/150"
+              }
               alt={vacancy?.organization?.organization_name}
               className={vacancyListStyle.companyLogo}
+              width={100}
+              height={250}
             />
             <div className={vacancyListStyle.companyInfo}>
               <h2 className={vacancyListStyle.company__name}>
@@ -40,7 +48,12 @@ const VacancyList = ({ vacancy }: any) => {
             <p className={vacancyListStyle.summary}>{vacancy?.description}</p>
           </div>
           <div className={vacancyListStyle.content__image}>
-            <img alt={vacancy?.job_type} src={vacancy?.banner_img} />
+            <Image
+              alt={vacancy?.job_type}
+              src={vacancy?.banner_img ?? "https://via.placeholder.com/630x280"}
+              width={630}
+              height={280}
+            />
           </div>
           <div className={vacancyListStyle.footer}>
             <div>
@@ -59,7 +72,7 @@ const VacancyList = ({ vacancy }: any) => {
                 Deadline : {vacancy?.application_deadline}
               </h3>
             </div>
-            <ApplyBtn />
+            <ApplyBtn id={vacancy?.id} />
           </div>
         </div>
       </article>
@@ -68,13 +81,13 @@ const VacancyList = ({ vacancy }: any) => {
           <h2 className={vacancyListStyle.industryName}>
             {vacancy.organization.industry}
           </h2>
-          <p>Phone: {vacancy.organization.phone_no}</p>
-          <p>Alt Phone: {vacancy.organization.alt_phone_no}</p>
+          <p>Phone: {vacancy?.organization?.phone_no}</p>
+          <p>Alt Phone: {vacancy?.organization?.alt_phone_no}</p>
           <Link
-            href={vacancy.organization.website}
+            href={vacancy?.organization?.website ?? "#"}
             className={vacancyListStyle.industryWebsite}
           >
-            Website: {vacancy.organization.website}
+            Website: {vacancy?.organization?.website}
           </Link>
           <p>
             Verified Company: {vacancy.organization.is_verified ? "Yes" : "No"}
@@ -82,7 +95,7 @@ const VacancyList = ({ vacancy }: any) => {
         </div>
         <div className={vacancyListStyle.details}>
           <p>Salary: {vacancy.salary}</p>
-          <p>Duration: {vacancy.duration}</p>
+          <p>Duration: {vacancy.duration} months</p>
           <p>Requirements: {vacancy.requirements}</p>
           <p>Job Type: {vacancy.job_type}</p>
           <p>Contact Email: {vacancy.contact_email}</p>

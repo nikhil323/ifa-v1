@@ -14,7 +14,6 @@ export interface apiRes {
 }
 
 const PopUpMsg: React.FC<any> = ({ loginRes, setLoginRes }) => {
-  console.log("login res", loginRes);
   const status = loginRes?.status;
   const msg = loginRes?.msg;
   const [displayMessage, setDisplayMessage] = useState(false);
@@ -61,6 +60,12 @@ const PopUpMsg: React.FC<any> = ({ loginRes, setLoginRes }) => {
           <span className={popUpStyles.successText}>{msg}</span>
         )}
         {status === "login-to-proceed" && (
+          <span className={popUpStyles.errorText}>{msg}</span>
+        )}
+        {status === "applied" && (
+          <span className={popUpStyles.successText}>{msg}</span>
+        )}
+        {status === "already-applied" && (
           <span className={popUpStyles.errorText}>{msg}</span>
         )}
       </div>

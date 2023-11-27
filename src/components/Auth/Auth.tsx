@@ -67,6 +67,9 @@ const Auth = () => {
   //check if company or personal is clicked
   const [company, setCompany] = useState(false);
 
+  const [loadingLogin, setLoadingLogin] = useState(false);
+  const [loadingRegister, setLoadingRegister] = useState(false);
+
   //login response
   const [loginRes, setLoginRes] = useState<loginResProp | null>(null);
 
@@ -84,12 +87,15 @@ const Auth = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e?.preventDefault();
     if (hasAccount) {
+      setLoadingLogin(true);
       const res = await login(loginFormData);
+      setLoadingLogin(false);
       setLoginRes({ ...res });
       if (res?.status === 200) {
         router.push("/");
       }
     } else if (!hasAccount && company) {
+      setLoadingRegister(true);
       const userRegister = {
         email: companyFormData?.email,
         password: companyFormData?.password,
@@ -105,10 +111,12 @@ const Auth = () => {
       };
       setLoginRes({ ...data });
       const organization = await registerOrganization(companyData);
+      setLoadingRegister(false);
       if (organization) {
         router.push("/org-profile");
       }
     } else if (!hasAccount && !company) {
+      setLoadingRegister(true);
       const userRegister = {
         email: personalFormData?.email,
         password: personalFormData?.password,
@@ -124,6 +132,7 @@ const Auth = () => {
       };
       setLoginRes({ ...data });
       const student = await registerStudent(personalData);
+      setLoadingRegister(false);
       if (student) {
         router.push("/std-profile");
       }
@@ -133,29 +142,33 @@ const Auth = () => {
   return (
     <>
       <div className={signUpStyles.container}>
-        <h2 className={signUpStyles.heading}>
-          {hasAccount
-            ? `${company ? "Company" : "Individual"} Login`
-            : "Create an account"}
-        </h2>
-        <div className={`${signUpStyles.buttons} ${signUpStyles.mbMedium}`}>
-          <button
-            className={`${
-              company ? signUpStyles.activeBtn : signUpStyles.inactiveBtn
-            }`}
-            onClick={() => setCompany(true)}
-          >
-            Company
-          </button>
-          <button
-            className={`${
-              !company ? signUpStyles.activeBtn : signUpStyles.inactiveBtn
-            }`}
-            onClick={() => setCompany(false)}
-          >
-            Personal
-          </button>
-        </div>
+        {!hasAccount && (
+          <h2 className={signUpStyles.heading}>
+            {hasAccount
+              ? `${company ? "Company" : "Individual"} Login`
+              : "Create an account"}
+          </h2>
+        )}
+        {!hasAccount && (
+          <div className={`${signUpStyles.buttons} ${signUpStyles.mbMedium}`}>
+            <button
+              className={`${
+                company ? signUpStyles.activeBtn : signUpStyles.inactiveBtn
+              }`}
+              onClick={() => setCompany(true)}
+            >
+              Company
+            </button>
+            <button
+              className={`${
+                !company ? signUpStyles.activeBtn : signUpStyles.inactiveBtn
+              }`}
+              onClick={() => setCompany(false)}
+            >
+              Personal
+            </button>
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
           {/* does not have account and company is selected then show company form */}
           {!hasAccount && company && (
@@ -194,7 +207,7 @@ const Auth = () => {
                 name="submit"
                 value="submit"
               >
-                Login
+                {loadingLogin ? "Loading..." : "Login"}
               </button>
             ) : (
               <button
@@ -202,7 +215,7 @@ const Auth = () => {
                 name="submit"
                 value="submit"
               >
-                Register
+                {loadingRegister ? "Loading..." : "Register"}
               </button>
             )}
           </div>

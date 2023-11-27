@@ -46,6 +46,7 @@ const OrgForm = () => {
     organization_documents: orgData?.organization_documents
       ? orgData?.organization_documents
       : null,
+    photo: orgData?.photo ? orgData?.photo : null,
   };
 
   //error state
@@ -67,9 +68,14 @@ const OrgForm = () => {
     null
   );
 
+  const [selectedCompanyPhoto, setSelectedCompanyPhoto] = useState<
+    string | null
+  >(null);
+
   const [errors, setErrors] = useState<any>(errorState);
   const [showErrorMsg, setShowErrorMsg] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
+  const [loadingLogout, setLoadingLogout] = useState(false);
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
 
   const handleChangeFiles = (e: any) => {
@@ -82,6 +88,9 @@ const OrgForm = () => {
     if (name === "organization_documents") {
       const prevUrl = URL.createObjectURL(file);
       setSelectedCompanyDoc(prevUrl);
+    } else if (name === "photo") {
+      const prevUrl = URL.createObjectURL(file);
+      setSelectedCompanyPhoto(prevUrl);
     }
   };
 
@@ -113,6 +122,7 @@ const OrgForm = () => {
           name === "organization_documents" &&
           typeof formData[name] === "string"
         ) {
+        } else if (name === "photo" && typeof formData[name] === "string") {
         } else {
           formFields.append(name, formData[name]);
         }
@@ -131,6 +141,22 @@ const OrgForm = () => {
       <form onSubmit={handleOrgProfileUpdate}>
         <p className={orgStyles.title}>Preview</p>
         <div className={orgStyles.imgPreview}>
+          <div>
+            <p className={orgStyles.text}>Company Photo</p>
+            <Image
+              src={
+                typeof formData?.photo === "string"
+                  ? formData?.photo
+                  : selectedCompanyPhoto
+                  ? selectedCompanyPhoto
+                  : "https://via.placeholder.com/150"
+              }
+              width={150}
+              height={150}
+              alt="company photo"
+              className={orgStyles?.profileImgPrev}
+            />
+          </div>
           <div>
             <p className={orgStyles.text}>Company Document</p>
             <Image
@@ -231,10 +257,10 @@ const OrgForm = () => {
           </div>
           <div className={orgStyles.twoInput}>
             <input
-              type="text"
-              placeholder="Contact Person"
-              name="contact_person"
-              value={formData?.contact_person}
+              type="number"
+              placeholder="Vat No"
+              name="vat_no"
+              value={formData?.vat_no}
               onChange={(e) => handleInputChange(e, formData, setFormData)}
               className={`${orgStyles.contactName}`}
             />
@@ -249,14 +275,22 @@ const OrgForm = () => {
           </div>
 
           <div className={orgStyles.twoInput}>
-            <input
-              type="number"
-              placeholder="Vat No"
-              name="vat_no"
-              value={formData?.vat_no}
-              onChange={(e) => handleInputChange(e, formData, setFormData)}
-              className={`${orgStyles.contactName}`}
-            />
+            <label
+              htmlFor="upload-org-photo"
+              className={`${orgStyles.fileFieldStyle}`}
+            >
+              {formData?.photo?.name
+                ? formData?.photo?.name?.substring(0, 10) + "..."
+                : "Upload Org Photo"}
+              <input
+                id="upload-org-photo"
+                type="file"
+                accept="image/*"
+                placeholder="Upload Org Photo"
+                name="photo"
+                onChange={handleChangeFiles}
+              />
+            </label>
             <label
               htmlFor="upload-org-doc"
               className={`${orgStyles.fileFieldStyle}`}
@@ -268,7 +302,7 @@ const OrgForm = () => {
               <input
                 id="upload-org-doc"
                 type="file"
-                // value={formData?.resume}
+                accept="image/*"
                 placeholder="Upload Org Doc"
                 name="organization_documents"
                 onChange={handleChangeFiles}
@@ -296,15 +330,17 @@ const OrgForm = () => {
           name="logout"
           className={orgStyles.submitBtn}
           onClick={async () => {
+            setLoadingLogout(true);
             await logout();
             localStorage.removeItem("studentId");
             localStorage.removeItem("orgId");
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
             router.push("/login-register");
+            setLoadingLogout(false);
           }}
         >
-          Logout
+          {loadingLogout ? "Loading..." : "Logout"}
         </button>
       </div>
       {showErrorMsg && (

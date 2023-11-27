@@ -13,7 +13,7 @@ const DetailsCard = ({ imageUrl, description, id }: any) => {
     <div className={styles.cardContainer}>
       <Image
         src={
-          imageUrl ? `${baseUrl}${imageUrl}` : "https://via.placeholder.com/300"
+          imageUrl ? `${baseUrl}${imageUrl}` : "https://via.placeholder.com/100"
         }
         alt="something"
         className={styles.image}

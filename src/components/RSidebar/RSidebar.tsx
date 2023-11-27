@@ -4,7 +4,11 @@ import React from "react";
 import rsidebarStyles from "./rsidebarStyles.module.css";
 
 const RSidebar = () => {
-  return <div className={rsidebarStyles.container}>RSidebar</div>;
+  return <div className={rsidebarStyles.container}>
+    <div>
+      
+    </div>
+  </div>;
 };
 
 export default RSidebar;

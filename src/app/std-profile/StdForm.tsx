@@ -67,6 +67,7 @@ const ProfileForm = () => {
   const [showErrorMsg, setShowErrorMsg] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+  const [loadingLogout, setLoadingLogout] = useState(false);
 
   const handleChangeFiles = (e: any) => {
     const { name } = e?.target;
@@ -225,7 +226,6 @@ const ProfileForm = () => {
               value={formData?.phone_no}
               onChange={(e) => handleInputChange(e, formData, setFormData)}
               onBlur={() => {
-                console.log("phone length is", formData?.phone_no?.length);
                 if (formData?.phone_no?.length > 10) {
                   console.log("setting error");
                   setErrors({
@@ -293,7 +293,7 @@ const ProfileForm = () => {
               <input
                 id="upload-resume"
                 type="file"
-                // value={formData?.resume}
+                accept="image/*"
                 placeholder="Upload resume"
                 name="resume"
                 onChange={handleChangeFiles}
@@ -309,7 +309,7 @@ const ProfileForm = () => {
               <input
                 id="upload-cv"
                 type="file"
-                // value={formData?.cover_letter}
+                accept="image/*"
                 placeholder="Upload CV"
                 name="cover_letter"
                 onChange={handleChangeFiles}
@@ -329,7 +329,7 @@ const ProfileForm = () => {
               <input
                 type="file"
                 id="upload-photo"
-                // value={formData?.photo}
+                accept="image/*"
                 placeholder="Choose photo"
                 name="photo"
                 onChange={handleChangeFiles}
@@ -343,6 +343,7 @@ const ProfileForm = () => {
                 backgroundColor: "#85a8c5",
                 cursor: "none",
               }}
+              disabled
             ></input>
           </div>
           <button
@@ -359,15 +360,17 @@ const ProfileForm = () => {
         name="logout"
         className={profileStyles.submitBtn}
         onClick={async () => {
+          setLoadingLogout(true);
           await logout();
           localStorage.removeItem("studentId");
           localStorage.removeItem("orgId");
           localStorage.removeItem("accessToken");
           localStorage.removeItem("refreshToken");
+          setLoadingLogout(false);
           router.push("/login-register");
         }}
       >
-        Logout
+        {loadingLogout ? "Loading..." : "Logout"}
       </button>
       {showErrorMsg && (
         <PopUpMsg

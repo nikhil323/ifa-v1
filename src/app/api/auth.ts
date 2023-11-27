@@ -78,7 +78,7 @@ export const registerOrganization = async (body: any) => {
   });
   const data = await res.json();
   if (res?.status === 201) {
-    localStorage.setItem("orgId", data?.id);
+    localStorage.setItem("orgId", data?.organization_id);
     return data;
   }
 };
@@ -177,8 +177,6 @@ export const addVacancy = async (body: any) => {
     body: body,
   });
   const data = await res.json();
-  console.log("data in create vacancy", data);
-  console.log("res in create vacancy", res);
   if (res?.status === 201) {
     return data;
   }
@@ -198,5 +196,26 @@ export const getOrgVacancy = async () => {
   const data = await res.json();
   if (res?.status === 200) {
     return data;
+  }
+};
+
+//apply vacancy
+export const applyVacancy = async (body: any) => {
+  const accessToken = localStorage.getItem("accessToken");
+  const res = await fetch(`${baseUrl}/application/apply-application`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  console.log("the res", res);
+
+  if (res?.status === 201) {
+    return data;
+  } else if (res?.status === 400) {
+    return res?.status;
   }
 };

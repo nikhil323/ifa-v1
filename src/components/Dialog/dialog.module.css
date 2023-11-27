@@ -29,7 +29,7 @@
     align-items: flex-end;
     margin-bottom: .5rem;
     font-weight: 700;
-    color:#40c2a6;
+    color:#555;
 }
 
 .crossBtn {
@@ -57,8 +57,9 @@
     padding: 1rem;
     border-radius: 4px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .okBtn:hover {
-    background-color: #40c2a6;
+    background-color: #52ab98;
 }

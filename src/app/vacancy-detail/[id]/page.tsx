@@ -12,6 +12,7 @@ async function getVacancyDetailById(id: number) {
 
 const VacancyDetail = async ({ params }: { params: { id: number } }) => {
   const vacancy = await getVacancyDetailById(params?.id);
+  console.log("page vacancy", vacancy);
   return (
     <div>
       <VacancyList vacancy={vacancy} />
