@@ -4,15 +4,8 @@ import styles from "./styles.module.css";
 
 import HomePageCard from "./DetailsCard";
 
-interface internships {
-  id: number;
-  imageUrl: any;
-  description: string;
-  detailLink: string;
-}
-
 interface trendingJobsProps {
-  internships: internships[];
+  internships: any[];
   title: string;
 }
 
@@ -25,9 +18,9 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
           return (
             <HomePageCard
               key={jobs?.id}
-              imageUrl={jobs?.imageUrl}
+              imageUrl={jobs?.banner_img}
               description={jobs?.description}
-              detailLink={jobs?.detailLink}
+              id={jobs?.id}
             />
           );
         })}

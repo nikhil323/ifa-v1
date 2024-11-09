@@ -15,31 +15,24 @@ const Carousel = () => {
   const items = [
     {
       id: 4,
-      title: "something 5",
+      title: "Diversified Internship platform",
       description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia aspernatur quisquam pariatur accusamus saepe debitis nihil tempore placeat doloribus labore?",
+        "Find your choice of internships from IT, Healthcare, Banking, Accounts etc.",
       icon: jobOffer,
     },
     {
       id: 1,
-      title: "something 1",
+      title: "Organization platform",
       description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia aspernatur quisquam pariatur accusamus saepe debitis nihil tempore placeat doloribus labore?",
+        "As an organization you can find interns from across the country.",
       icon: interview,
     },
     {
       id: 2,
-      title: "something 2",
+      title: "Platform for interns",
       description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia aspernatur quisquam pariatur accusamus saepe debitis nihil tempore placeat doloribus labore?",
+        "Browse and go through thousands of internship opportunities and apply on one click.",
       icon: careerProgress,
-    },
-    {
-      id: 3,
-      title: "something 3",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia aspernatur quisquam pariatur accusamus saepe debitis nihil tempore placeat doloribus labore?",
-      icon: feelingProud,
     },
   ];
 

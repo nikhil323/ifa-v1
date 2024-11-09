@@ -67,8 +67,12 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    align-items: center;
     margin-bottom: 1rem;
+    flex-direction: column;
 }
+
+
 
 .inputfields {
     width: 80%;
@@ -77,6 +81,14 @@
     border: 0;
     font-size: 1.6rem;
     color: #3f3d56;
+}
+
+.inputfields__error {
+    display: flex;
+    width: inherit;
+    color: rgb(132, 26, 26);
+    width: 80%;
+    margin-top: .4rem;
 }
 
 .registerBtn {

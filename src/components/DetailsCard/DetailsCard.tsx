@@ -2,23 +2,30 @@ import React from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { baseUrl } from "@/app/api/auth";
 
-const DetailsCard = ({ imageUrl, description, detailLink }: any) => {
+const DetailsCard = ({ imageUrl, description, id }: any) => {
   const showLess = (num: number, desc: string) => {
     return desc.slice(0, num) + "...";
   };
 
   return (
     <div className={styles.cardContainer}>
-      <Image src={imageUrl} alt="something" className={styles.image} />
-      <p className={styles.description}>
-        {showLess(80, description)}
-        <span>
-          <Link href={detailLink} className={styles.viewDetail}>
-            {"View Detail ->"}
-          </Link>
-        </span>
-      </p>
+      <Image
+        src={
+          imageUrl ? `${baseUrl}${imageUrl}` : "https://via.placeholder.com/100"
+        }
+        alt="something"
+        className={styles.image}
+        width={100}
+        height={100}
+      />
+      <p className={styles.description}>{showLess(80, description)}</p>
+      <div>
+        <Link href={`vacancy-detail/${id}`} className={styles.viewDetail}>
+          {"View Detail ->"}
+        </Link>
+      </div>
     </div>
   );
 };

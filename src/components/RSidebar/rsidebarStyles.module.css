@@ -1,0 +1,30 @@
+.container {
+    display: inline-block;
+    width: 25%;
+    background-color: #fff;
+    margin-top: 8rem;
+    height: 48rem;
+    vertical-align: top;
+    border-radius: .8rem;
+    padding: .5rem;
+    font-size: 1.6rem;
+}
+
+.inner {
+    padding: 2rem;
+}
+
+.title {
+    color: #52ab98;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.points {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.points li {
+    margin-bottom: 1rem;
+}

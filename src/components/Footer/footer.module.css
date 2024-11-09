@@ -7,6 +7,10 @@
     font-size: 1.4rem;
     padding: 1rem;
     border-top: 1px solid #fff;
+
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
 }
 
 .platform {

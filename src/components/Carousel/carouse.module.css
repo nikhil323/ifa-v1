@@ -1,17 +1,13 @@
 .carousel {
-    /* margin-top: 30px; */
     overflow: hidden;
-    width: 100vw;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* box-shadow: 0 0px 15px rgba(0, 0, 0, .3); */
 }
 
 .inner {
     white-space: nowrap;
     transition: transform 0.3s;
-    /* box-shadow: 0 5px 15px rgba(0, 0, 0, .05); */
 }
 
 .carousel_item {
@@ -32,7 +28,6 @@
     margin: 40px 0 40px 0;
     padding: 0 20px 0 20px;
     white-space: normal;
-    /* color: #617d98; */
     color: #3f3d56;
 }
 
@@ -51,7 +46,6 @@
     border-radius: 4px;
     background-color: #52ab98;
     border: 1px solid #3f3d56;
-    /* margin-top: 1rem; */
 }
 
 .indicators {
@@ -73,6 +67,5 @@
 }
 
 .indicator_symbol_active {
-    /* color:#52ab98; */
     color: #fff;
 }

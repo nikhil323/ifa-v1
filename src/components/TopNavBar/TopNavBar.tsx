@@ -9,11 +9,12 @@ import pathFinderIcon from "../../../public/path-finder-icon-black.png";
 //css
 import topStyle from "./topNavBar.module.css";
 import NavigationList from "./NavigationList";
+import Link from "next/link";
 
 const TopNavBar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
-  //to hide navbar when scrolling down
+  // to hide navbar when scrolling down
   // useEffect(() => {
   //   const handleScroll = () => {
   //     const navbarElement = document.getElementById("nav-container");
@@ -39,12 +40,14 @@ const TopNavBar = () => {
     <React.Fragment>
       <div className={topStyle.container} id="nav-container">
         <div className={topStyle.headerContent}>
-          <Image
-            src={pathFinderIcon}
-            alt="pathfinder icon"
-            className={topStyle.headerContent__logo}
-            priority
-          />
+          <Link href="/">
+            <Image
+              src={pathFinderIcon}
+              alt="pathfinder icon"
+              className={topStyle.headerContent__logo}
+              priority
+            />
+          </Link>
           <h1 className={topStyle.headerContent__title}>Path Finder</h1>
         </div>
         <NavigationList />
