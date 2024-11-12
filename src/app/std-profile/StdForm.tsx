@@ -17,9 +17,18 @@ export interface error {
 }
 
 const ProfileForm = () => {
+  const [stdId, setStdId] = useState("");
+  useEffect(() => {
+    if (!localStorage) {
+      return;
+    }
+    const id = localStorage?.getItem("studentId");
+    if (id) {
+      setStdId(id);
+    }
+  }, []);
   const router = useRouter();
   const [studentData, setStudentData] = useState<any>(null);
-  const stdId = localStorage.getItem("studentId");
 
   useEffect(() => {
     const fetchStd = async () => {

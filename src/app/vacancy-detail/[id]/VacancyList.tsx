@@ -50,8 +50,8 @@ const VacancyList = ({ vacancy }: any) => {
           <div className={vacancyListStyle.content__image}>
             <Image
               alt={vacancy?.job_type}
-              src={vacancy?.banner_img ?? "https://via.placeholder.com/630x280"}
-              width={630}
+              src={vacancy?.banner_img ?? "https://via.placeholder.com/565x280"}
+              width={565}
               height={280}
             />
           </div>

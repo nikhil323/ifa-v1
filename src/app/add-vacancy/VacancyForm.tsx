@@ -18,8 +18,17 @@ export interface error {
 }
 
 const VacancyForm = () => {
+  const [orgId, setOrgId] = useState("");
+  useEffect(() => {
+    if (!localStorage) {
+      return;
+    }
+    const id = localStorage?.getItem("orgId");
+    if (id) {
+      setOrgId(id);
+    }
+  }, []);
   const router = useRouter();
-  const orgId = localStorage.getItem("orgId");
 
   //initialState
   const initialState = {

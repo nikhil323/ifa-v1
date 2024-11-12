@@ -18,7 +18,7 @@ const AboutUs = () => {
       <div className={aboutUsStyles.content}>
         <h3 className={aboutUsStyles.headingText}>About Us</h3>
         <p className={aboutUsStyles.aboutText}>
-          Pathfinder is a online platform for internship-seekers who want to do internship and organizations who can add internship 
+          Pathfinder is a online platform for internship-seekers who want to do internship and organizations who can add internship
           opportunity available in their organization.
         </p>
         <h3 className={aboutUsStyles.headingText}>Vision & Objectives</h3>
