@@ -10,7 +10,7 @@ const Footer = () => {
       <div className={footerStyles.footerContainer}>
         <div className={footerStyles.platform}>
           <h2 className={footerStyles.platformText}>
-            Path Finder, begin your professional journey...&#174;
+            IFA, begin your professional journey...&#174;
           </h2>
         </div>
         {/* <h3 className={footerStyles.mb_medium}>Helpful Links</h3> */}
@@ -25,7 +25,7 @@ const Footer = () => {
         <div className={footerStyles.location}>
           {/* <h3 className={footerStyles.mb_medium}>Our Location</h3> */}
           <p>Lokanthali, Bhaktapur</p>
-          <p>pathfinder@gmail.com</p>
+          <p>ifa@gmail.com</p>
           <p>+977 54312</p>
         </div>
         <div className={footerStyles.links}>
@@ -35,7 +35,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={footerStyles.copyright}>
-        <h4>&#169; 2023 Path Finder. All rights reserved.</h4>
+        <h4>&#169; 2023 IFA. All rights reserved.</h4>
       </div>
     </footer>
   );

@@ -51,7 +51,7 @@ const Card = async () => {
         <div className={loginStyles.cardContainer}>
           {/* <section className={loginStyles.topSection}>
             <Image
-              alt="pathfinder logo"
+              alt="IFA logo"
               src={companyLogo}
               className={loginStyles.companyLogo}
             />

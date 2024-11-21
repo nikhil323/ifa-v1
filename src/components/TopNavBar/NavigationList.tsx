@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,9 +8,25 @@ import { usePathname } from "next/navigation";
 import topStyle from "./topNavBar.module.css";
 
 const NavigationList = () => {
+  const [stdId, setStdId] = useState("");
+  const [orgId, setOrgId] = useState("");
+
+  useEffect(() => {
+    if (!localStorage) {
+      return;
+    }
+    const stId = localStorage?.getItem("studentId");
+    const orId = localStorage?.getItem("orgId");
+
+    if (stId) {
+      setStdId(stId);
+    }
+    if (orId) {
+      setOrgId(orId);
+    }
+  }, []);
   const pathname = usePathname();
-  const studentId = localStorage.getItem("studentId");
-  const orgId = localStorage.getItem("orgId");
+
   return (
     <nav className={topStyle.navigationLinkContainer}>
       <Link
@@ -47,7 +63,7 @@ const NavigationList = () => {
       >
         Contact Us
       </Link>
-      {studentId && (
+      {stdId && (
         <Link
           href="/std-profile"
           className={`${topStyle.navigationLink} ${
@@ -93,7 +109,7 @@ const NavigationList = () => {
         </Link>
       )}
 
-      {!studentId && !orgId && (
+      {!stdId && !orgId && (
         <Link
           href="/login-register"
           className={`${topStyle.navigationLink} ${

@@ -18,9 +18,19 @@ export interface error {
 }
 
 const OrgForm = () => {
+  const [orgId, setOrgId] = useState("");
+
+  useEffect(() => {
+    if (!localStorage) {
+      return;
+    }
+    const id = localStorage?.getItem("orgId");
+    if (id) {
+      setOrgId(id);
+    }
+  }, []);
   const router = useRouter();
   const [orgData, setOrgData] = useState<any>(null);
-  const orgId = localStorage.getItem("orgId");
 
   useEffect(() => {
     const fetchOrg = async () => {

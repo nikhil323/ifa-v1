@@ -10,9 +10,24 @@ import Dialog from "@/components/Dialog/Dialog";
 import { applyVacancy } from "@/app/api/auth";
 
 const ApplyBtn = ({ id }: any) => {
+  const [stdId, setStdId] = useState("");
+  const [orgId, setOrgId] = useState("");
+
+  useEffect(() => {
+    if (!localStorage) {
+      return;
+    }
+    const stId = localStorage?.getItem("studentId");
+    const orId = localStorage?.getItem("orgId");
+
+    if (stId) {
+      setStdId(stId);
+    }
+    if (orId) {
+      setOrgId(orId);
+    }
+  }, []);
   const router = useRouter();
-  const stdId = localStorage.getItem("studentId");
-  const orgId = localStorage.getItem("orgId");
   const [showMessage, setShowMessage] = useState(false);
   const initialMsg = {
     status: "",
