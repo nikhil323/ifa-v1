@@ -20,7 +20,7 @@ const InfoCard = () => {
           <Card
             title="Company Listed"
             count={33}
-            description="Top organizations seek interns in Pathfinder."
+            description="Top organizations seek interns in IFA."
           />
           <Card
             title="Students Engaged"

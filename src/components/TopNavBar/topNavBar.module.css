@@ -21,8 +21,9 @@
 }
 
 .headerContent__logo {
-    max-width: 8rem;
+    max-width: 45rem;
     height: 7rem;
+    font-size: 4rem;
 }
 
 .headerContent__title {

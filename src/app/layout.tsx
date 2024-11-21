@@ -7,7 +7,7 @@ import Footer from "@/components/Footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "path finder",
+  title: "IFA",
   description: "platform for finding internship to students",
 };
 

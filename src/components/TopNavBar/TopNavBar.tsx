@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 //images
-import pathFinderIcon from "../../../public/path-finder-icon-black.png";
+import IFALogo3 from "../../../public/images/IFA3.png";
 
 //css
 import topStyle from "./topNavBar.module.css";
@@ -37,22 +37,19 @@ const TopNavBar = () => {
   // }, [prevScrollPos]);
 
   return (
-    <React.Fragment>
-      <div className={topStyle.container} id="nav-container">
-        <div className={topStyle.headerContent}>
-          <Link href="/">
-            <Image
-              src={pathFinderIcon}
-              alt="pathfinder icon"
-              className={topStyle.headerContent__logo}
-              priority
-            />
-          </Link>
-          <h1 className={topStyle.headerContent__title}>Path Finder</h1>
-        </div>
-        <NavigationList />
+    <div className={topStyle.container} id="nav-container">
+      <div className={topStyle.headerContent}>
+        <Link href="/">
+          <Image
+            src={IFALogo3}
+            alt="ifa icon"
+            className={topStyle.headerContent__logo}
+            priority
+          />
+        </Link>
       </div>
-    </React.Fragment>
+      <NavigationList />
+    </div>
   );
 };
 
