@@ -1,4 +1,4 @@
-export const baseUrl = "http://192.168.1.76:8002";
+export const baseUrl = "http://192.168.1.112:8002";
 // export const baseUrl = "https://paban.pythonanywhere.com";
 
 export const login = async (cred: any) => {

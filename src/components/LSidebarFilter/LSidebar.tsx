@@ -50,10 +50,10 @@ const Sidebar = () => {
             <option value="biratnagar">Biratnagar</option>
           </select>
         </div>
-        <hr className={lSidebarStyles.horizontalLine} />
+        {/* <hr className={lSidebarStyles.horizontalLine} /> */}
 
         {/* Type Radio Buttons */}
-        <div className={lSidebarStyles.filterOption}>
+        {/* <div className={lSidebarStyles.filterOption}>
           <div className={lSidebarStyles.filterOption__time}>
             <label htmlFor="full-time">Full-Time : </label>
             <input
@@ -74,13 +74,12 @@ const Sidebar = () => {
               className={lSidebarStyles.rangeStyle}
             />
           </div>
-        </div>
+        </div> */}
 
-        <hr className={lSidebarStyles.horizontalLine} />
+        {/* <hr className={lSidebarStyles.horizontalLine} /> */}
 
         {/* Sort By period */}
-        <div className={lSidebarStyles.dropdownOption}>
-          {/* <label htmlFor="sort-by">Sort By:</label> */}
+        {/* <div className={lSidebarStyles.dropdownOption}>
           <select id="sort-by" className={lSidebarStyles.selectInput}>
             <option value="" selected disabled>
               Sort by
@@ -90,7 +89,7 @@ const Sidebar = () => {
             <option value="views">Most Viewed</option>
             <option value="latest">Latest</option>
           </select>
-        </div>
+        </div> */}
         <hr className={lSidebarStyles.horizontalLine} />
 
         {/* Sort By category */}
@@ -132,9 +131,8 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <hr className={lSidebarStyles.horizontalLine} />
+        {/* <hr className={lSidebarStyles.horizontalLine} />
         <div className={lSidebarStyles.paymentFilterContainer}>
-          {/* Checkbox for Paid/Unpaid */}
           <div className={lSidebarStyles.paymentFilter}>
             <label htmlFor="paid">Paid:</label>
             <input
@@ -146,7 +144,6 @@ const Sidebar = () => {
             />
           </div>
 
-          {/* Checkbox for Remote Work Availability */}
           <div className={lSidebarStyles.paymentFilter}>
             <label htmlFor="remote">Remote Work:</label>
             <input
@@ -157,7 +154,7 @@ const Sidebar = () => {
               className={lSidebarStyles.rangeStyle}
             />
           </div>
-        </div>
+        </div> */}
         <hr className={lSidebarStyles.horizontalLine} />
 
         {/* Company status */}
