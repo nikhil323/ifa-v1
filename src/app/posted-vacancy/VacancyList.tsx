@@ -1,95 +1,61 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import vacancyStyles from "./postedVacancy.module.css";
 import Link from "next/link";
+import { getOrgVacancy } from "../api/auth";
 
-const dummyList = [
-  {
-    id: 1,
-    post: "Frontend",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 2,
-    post: "QA",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 3,
-    post: "Designer",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 4,
-    post: "Backend",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 5,
-    post: "DBA",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 6,
-    post: "Hotel MNGT",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 7,
-    post: "Sales",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 8,
-    post: "Marketing",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 9,
-    post: "Accountant",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 10,
-    post: "Cloud",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 11,
-    post: "AWS",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 12,
-    post: "AI",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-  {
-    id: 13,
-    post: "Machine Learning",
-    desc: "lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd lskfj alskjdf laskdf laskdfj lskdf laskf  lasd",
-  },
-];
+const VacancyList = ({ vacancyData }: any) => {
+  const [vacancies, setVacancies] = useState([]);
 
-const VacancyList = () => {
-    useEffect(() => {
-        
-    })
+  useEffect(() => {
+    const func = async () => {
+      try {
+        const data = await getOrgVacancy();
+        setVacancies(data);
+      } catch (e) {
+        console.error("Error fetching vacancies:", e);
+      }
+    };
+    func();
+  }, []);
+  console.log("the data is", vacancies);
   return (
     <div className={vacancyStyles.content}>
       <h2 className={vacancyStyles.title}>Posted Vacancy</h2>
 
       <div className={vacancyStyles.inner}>
-        {dummyList?.map((item) => {
+        {vacancies?.map((item: any) => {
           return (
             <div key={item?.id} className={vacancyStyles.listItems}>
-              <h3 className={vacancyStyles.itemTitle}>{item?.post}</h3>
-              <p>{item.desc}</p>
-              <Link href="#" className={vacancyStyles.viewDetail}>
+              <h3 className={vacancyStyles.itemTitle}>{item?.job_type}</h3>
+              <p style={{ marginBottom: "5px" }}>
+                Description: {item?.description}
+              </p>
+              <p style={{ marginBottom: "5px" }}>
+                Application Deadline :{item?.application_deadline}
+              </p>
+              <p style={{ marginBottom: "5px" }}>
+                Email :{item?.contact_email}
+              </p>
+              <p style={{ marginBottom: "5px" }}>
+                Phone :{item?.contact_phone}
+              </p>
+              <p style={{ marginBottom: "5px" }}>
+                Duration : {item?.duration} Months
+              </p>
+              <p style={{ marginBottom: "5px" }}>Location: {item?.location}</p>
+              <p style={{ marginBottom: "5px" }}>
+                Requirements: {item?.requirements}
+              </p>
+              <p style={{ marginBottom: "5px" }}>Salary: {item?.salary}</p>
+              <p style={{ marginBottom: "5px" }}>
+                Total Applications: {item?.total_applications}
+              </p>
+              {/* <Link href="#" className={vacancyStyles.viewDetail}>
                 {"View More ->"}
-              </Link>
+              </Link> */}
             </div>
           );
         })}

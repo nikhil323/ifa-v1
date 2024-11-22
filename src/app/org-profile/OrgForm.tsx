@@ -37,7 +37,9 @@ const OrgForm = () => {
       const orgData = await getOrgById(orgId as string | number);
       setOrgData(orgData);
     };
-    fetchOrg();
+    if (orgId) {
+      fetchOrg();
+    }
   }, [orgId]);
 
   //initialState
@@ -348,6 +350,7 @@ const OrgForm = () => {
             localStorage.removeItem("refreshToken");
             router.push("/login-register");
             setLoadingLogout(false);
+            location?.reload();
           }}
         >
           {loadingLogout ? "Loading..." : "Logout"}

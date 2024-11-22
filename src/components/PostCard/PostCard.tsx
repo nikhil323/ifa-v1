@@ -4,51 +4,6 @@ import Image from "next/image";
 import { link } from "fs";
 import ApplyBtn from "@/app/vacancy-detail/[id]/ApplyBtn";
 
-const posts = [
-  {
-    id: 1,
-    company_icon: "https://via.placeholder.com/100",
-    company_name: "company name 1",
-    company_location: "Baneshwor kathmandu",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque libero ipsa odit soluta tempore. Repellendus a deleniti totam ex sint?",
-    image: "https://via.placeholder.com/610x300",
-    imageAlt: "Alt image",
-    isVerified: true,
-    uploadedTime: "Nov 11 2023",
-    deadline: "Dec 11 2023",
-    appliedBy: 12,
-  },
-  {
-    id: 2,
-    company_icon: "https://via.placeholder.com/100",
-    company_name: "company name 2",
-    company_location: "lagankhel",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque libero ipsa odit soluta tempore. Repellendus a deleniti totam ex sint?",
-    image: "https://via.placeholder.com/610x300",
-    imageAlt: "Alt image",
-    isVerified: false,
-    uploadedTime: "Nov 10 2023",
-    deadline: "Jan 11 2024",
-    appliedBy: 17,
-  },
-  {
-    id: 3,
-    company_icon: "https://via.placeholder.com/100",
-    company_name: "company name 3",
-    company_location: "Baneshwor kathmandu",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque libero ipsa odit soluta tempore. Repellendus a deleniti totam ex sint?",
-    image: "https://via.placeholder.com/610x300",
-    imageAlt: "Alt image",
-    isVerified: true,
-    uploadedTime: "Nov 11 2023",
-    deadline: "Dec 11 2023",
-    appliedBy: 12,
-  },
-];
-
 const LinkedInCard = ({ vacancies }: any) => {
   console.log("the vacancies list in linked in card", vacancies);
   return (
@@ -85,8 +40,8 @@ const LinkedInCard = ({ vacancies }: any) => {
             <div className={postStyle.content__image}>
               <Image
                 alt={post?.imageAlt}
-                src={post?.banner_img ?? "https://via.placeholder.com/630x280"}
-                width={630}
+                src={post?.banner_img ?? "https://via.placeholder.com/545x280"}
+                width={545}
                 height={280}
               />
             </div>

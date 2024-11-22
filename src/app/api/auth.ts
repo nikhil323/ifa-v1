@@ -1,5 +1,5 @@
-// export const baseUrl = "http://192.168.1.99";
-export const baseUrl = "https://paban.pythonanywhere.com";
+export const baseUrl = "http://192.168.1.76:8002";
+// export const baseUrl = "https://paban.pythonanywhere.com";
 
 export const login = async (cred: any) => {
   const res = await fetch(`${baseUrl}/auth/login`, {

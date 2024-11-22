@@ -377,6 +377,7 @@ const ProfileForm = () => {
           localStorage.removeItem("refreshToken");
           setLoadingLogout(false);
           router.push("/login-register");
+          location?.reload();
         }}
       >
         {loadingLogout ? "Loading..." : "Logout"}
