@@ -6,6 +6,7 @@ const nextConfig = {
       "paban.pythonanywhere.com",
       "192.168.1.99:8002",
       "192.168.1.76",
+      "192.168.1.112",
     ],
   },
 };

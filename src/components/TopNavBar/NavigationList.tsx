@@ -8,23 +8,22 @@ import { usePathname } from "next/navigation";
 import topStyle from "./topNavBar.module.css";
 
 const NavigationList = () => {
-  const stId = localStorage?.getItem("studentId");
-  const orId = localStorage?.getItem("orgId");
-
   const [stdId, setStdId] = useState("");
   const [orgId, setOrgId] = useState("");
 
   useEffect(() => {
+    if (!localStorage) {
+      return;
+    }
+    const stId = localStorage?.getItem("studentId");
+    const orId = localStorage?.getItem("orgId");
     if (stId) {
       setStdId(stId);
     }
     if (orId) {
       setOrgId(orId);
     }
-    if (!localStorage) {
-      return;
-    }
-  }, [stId, orId]);
+  }, [stdId, orgId]);
   const pathname = usePathname();
 
   return (
