@@ -12,7 +12,7 @@ import NavigationList from "./NavigationList";
 import Link from "next/link";
 
 const TopNavBar = () => {
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  // const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   // to hide navbar when scrolling down
   // useEffect(() => {

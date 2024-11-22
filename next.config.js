@@ -5,6 +5,7 @@ const nextConfig = {
       "via.placeholder.com",
       "paban.pythonanywhere.com",
       "192.168.1.99:8002",
+      "192.168.1.76",
     ],
   },
 };

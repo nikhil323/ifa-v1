@@ -30,6 +30,11 @@
     border: 1px solid #52ab98;
 }
 
+.content__image {
+    max-width: 545px;
+    overflow-x: hidden;
+}
+
 .companyInfo {
     flex: 1;
 }
