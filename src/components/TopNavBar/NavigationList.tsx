@@ -12,9 +12,6 @@ const NavigationList = () => {
   const [orgId, setOrgId] = useState("");
 
   useEffect(() => {
-    if (!localStorage) {
-      return;
-    }
     const stId = localStorage?.getItem("studentId");
     const orId = localStorage?.getItem("orgId");
     if (stId) {
@@ -22,6 +19,9 @@ const NavigationList = () => {
     }
     if (orId) {
       setOrgId(orId);
+    }
+    if (!localStorage) {
+      return;
     }
   }, [stdId, orgId]);
   const pathname = usePathname();

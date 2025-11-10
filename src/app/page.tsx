@@ -10,24 +10,33 @@ import image4 from "../../public/images/online_cv.svg";
 import image5 from "../../public/images/teacher.svg";
 import InfoCard from "@/components/InfoCard/InfoCard";
 import { baseUrl } from "./api/auth";
+import MatchingJob from "@/components/DetailsCard/MatchingJob";
 
 async function getLatestVacancy() {
-  const res = await fetch(`${baseUrl}/latest-vacancies`, {
-    next: { revalidate: 0 },
-  });
+  try {
+    const res = await fetch(`${baseUrl}/latest-vacancies`, {
+      next: { revalidate: 0 },
+    });
 
-  if (res.ok) {
-    return res.json();
+    if (res.ok) {
+      return res.json();
+    }
+  } catch (e) {
+    console.log("the fetchinggggggggg", e);
   }
 }
 
 async function getMostInDemand() {
-  const res = await fetch(`${baseUrl}/max-applied-company`, {
-    next: { revalidate: 0 },
-  });
+  try {
+    const res = await fetch(`${baseUrl}/max-applied-company`, {
+      next: { revalidate: 0 },
+    });
 
-  if (res.ok) {
-    return res.json();
+    if (res.ok) {
+      return res.json();
+    }
+  } catch (e) {
+    console.log("error fetching most in demand", e);
   }
 }
 
@@ -44,6 +53,7 @@ export default async function Home() {
       </div>
       <TrendingJob title={"Latest Interns"} internships={latestInterns} />
       <TrendingJob title={"Most In Demand"} internships={inDemandInterns} />
+      <MatchingJob />
       <InfoCard />
     </>
   );

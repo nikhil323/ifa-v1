@@ -1,3 +1,4 @@
+// export const baseUrl = "http://10.10.11.161:8002";
 export const baseUrl = "http://192.168.1.112:8002";
 // export const baseUrl = "https://paban.pythonanywhere.com";
 
@@ -21,6 +22,7 @@ export const login = async (cred: any) => {
     } else if (data?.organization_id) {
       localStorage.setItem("orgId", data?.organization_id);
     }
+    location?.reload();
   }
   return {
     status: res.status,
@@ -196,6 +198,28 @@ export const getOrgVacancy = async () => {
   const data = await res.json();
   if (res?.status === 200) {
     return data;
+  }
+};
+
+export const getMatchingVacancy = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+
+  try {
+    const res = await fetch(`${baseUrl}/skills-matching`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+      },
+    });
+
+    const data = await res.json();
+    if (res?.status === 200) {
+      return data;
+    }
+    console.log("the response=====>", data);
+  } catch (e) {
+    console.log("error fetching most in demand", e);
   }
 };
 
