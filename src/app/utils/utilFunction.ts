@@ -9,6 +9,9 @@ export const handleInputChange = (e: any, formData: any, setFormData: any) => {
 
 export const getUserStatus = () => {
   if (typeof window !== "undefined") {
+    if (!localStorage) {
+      return;
+    }
     const studentId = localStorage.getItem("studentId");
     const orgId = localStorage.getItem("orgId");
     // const isAuth = studentId  || orgId
