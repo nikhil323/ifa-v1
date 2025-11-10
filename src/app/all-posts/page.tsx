@@ -8,12 +8,16 @@ import postStyles from "./allPost.module.css";
 import { baseUrl } from "../api/auth";
 
 async function getAllVacancy() {
-  const res = await fetch(`${baseUrl}/vacancy/public-vacancy`, {
-    next: { revalidate: 0 },
-  });
+  try {
+    const res = await fetch(`${baseUrl}/vacancy/public-vacancy`, {
+      next: { revalidate: 0 },
+    });
 
-  if (res.ok) {
-    return res.json();
+    if (res.ok) {
+      return res.json();
+    }
+  } catch (e) {
+    console.log("the error is", e);
   }
 }
 
@@ -21,7 +25,7 @@ const AllPosts = async () => {
   const allVacancies = await getAllVacancy();
   return (
     <div className={`${postStyles.container}`}>
-      <LSidebar />
+      {/* <LSidebar /> */}
       <LinkedInCard vacancies={allVacancies} />
       <RSidebar />
     </div>
