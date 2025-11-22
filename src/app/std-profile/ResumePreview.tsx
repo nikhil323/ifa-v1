@@ -1,7 +1,7 @@
 import Image from "next/image";
-import profileStyles from "./profileStyles.module.css"
+import profileStyles from "./profileStyles.module.css";
 
-export const ResumePreview = ({selectedResume, formData}:any) => {
+export const ResumePreview = ({ selectedResume, formData }: any) => {
   // Case 1: New file selected (File object)
   if (selectedResume instanceof File) {
     const fileType = selectedResume.type;

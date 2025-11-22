@@ -4,7 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { baseUrl } from "@/app/api/auth";
 
-const DetailsCard = ({ imageUrl, requirements, id, score }: any) => {
+const DetailsCard = ({
+  imageUrl,
+  requirements,
+  id,
+  score,
+  applicants,
+}: any) => {
   const showLess = (num: number, desc: string) => {
     return desc?.slice(0, num) + "...";
   };
@@ -34,6 +40,22 @@ const DetailsCard = ({ imageUrl, requirements, id, score }: any) => {
             }}
           >
             Matched {(+score * 100)?.toFixed(0)}%
+          </p>
+        ) : (
+          <></>
+        )}
+        {applicants ? (
+          <p
+            style={{
+              fontSize: "16px",
+              color: "white",
+              fontWeight: "bold",
+              textAlign: "center",
+              backgroundColor: "#52ab98",
+              padding: "5px",
+            }}
+          >
+            Applied By {+applicants}
           </p>
         ) : (
           <></>

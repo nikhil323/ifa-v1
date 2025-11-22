@@ -41,6 +41,7 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
                   imageUrl={jobs?.banner_img}
                   requirements={jobs?.requirements}
                   id={jobs?.id}
+                  applicants={jobs?.total_applications}
                 />
               );
             })}
@@ -52,7 +53,7 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
                 <HomePageCard
                   key={jobs?.id}
                   imageUrl={jobs?.banner_img}
-                  description={jobs?.description}
+                  requirements={jobs?.requirements}
                   id={jobs?.id}
                 />
               );

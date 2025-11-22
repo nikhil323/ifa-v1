@@ -95,7 +95,7 @@ const ProfileForm = () => {
       setSelectedProfile(prevUrl);
     } else if (name === "resume") {
       const prevUrl = URL.createObjectURL(file);
-      setSelectedResume(prevUrl);
+      setSelectedResume(file);
     }
   };
 
@@ -110,7 +110,7 @@ const ProfileForm = () => {
     });
     if (name === "resume") {
       const prevUrl = URL.createObjectURL(file);
-      setSelectedResume(prevUrl);
+      setSelectedResume(file);
     }
 
     // upload it to backed api
