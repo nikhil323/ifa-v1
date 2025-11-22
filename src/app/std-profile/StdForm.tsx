@@ -9,7 +9,13 @@ import { handleInputChange } from "../utils/utilFunction";
 import Image from "next/image";
 import { altPhoneMsg, phoneMsg } from "../utils/constant";
 import PopUpMsg from "@/components/PopUpMsg/PopUpMsg";
-import { getStudentById, logout, updateStudent } from "../api/auth";
+import {
+  getStudentById,
+  logout,
+  updateStudent,
+  updateStudentResume,
+} from "../api/auth";
+import { ResumePreview } from "./ResumePreview";
 
 export interface error {
   phoneNo: string;
@@ -93,6 +99,36 @@ const ProfileForm = () => {
     }
   };
 
+  const handleUploadPDF = async (e: any) => {
+    const { name } = e?.target;
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setFormData({
+      ...formData,
+      [name]: file,
+    });
+    if (name === "resume") {
+      const prevUrl = URL.createObjectURL(file);
+      setSelectedResume(prevUrl);
+    }
+
+    // upload it to backed api
+    const FileData = new FormData();
+    FileData.append("resume", file);
+
+    try {
+      const res = await updateStudentResume(FileData);
+
+      if (res) {
+        setShowSuccessMsg(true);
+        console.log("Upload success", res.data);
+      }
+    } catch (err) {
+      console.error("Upload failed", err);
+    }
+  };
+
   const handleStdProfileUpdate: FormEventHandler<HTMLFormElement> = async (
     e
   ) => {
@@ -118,7 +154,7 @@ const ProfileForm = () => {
 
       for (let name in formData) {
         if (name === "photo" && typeof formData[name] === "string") {
-        } else if (name === "resume" && typeof formData[name] === "string") {
+        } else if (name === "resume") {
         } else {
           formFields.append(name, formData[name]);
         }
@@ -156,7 +192,7 @@ const ProfileForm = () => {
           </div>
           <div>
             <p className={profileStyles.text}>Resume </p>
-            <Image
+            {/* <Image
               src={
                 typeof formData?.resume === "string"
                   ? formData?.resume
@@ -168,6 +204,11 @@ const ProfileForm = () => {
               height={150}
               alt="resume image"
               className={profileStyles?.profileImgPrev}
+              <
+            /> */}
+            <ResumePreview
+              selectedResume={selectedResume}
+              formData={formData}
             />
           </div>
           {/* <div>
@@ -291,7 +332,7 @@ const ProfileForm = () => {
                 accept="image/*,.pdf"
                 placeholder="Upload resume"
                 name="resume"
-                onChange={handleChangeFiles}
+                onChange={handleUploadPDF}
               />
             </label>
             {/* <label

@@ -243,3 +243,20 @@ export const applyVacancy = async (body: any) => {
     return res?.status;
   }
 };
+
+//update student resume
+export const updateStudentResume = async (body: any) => {
+  const accessToken = localStorage.getItem("accessToken");
+  const res = await fetch(`${baseUrl}/upload-resume/`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+    },
+    body: body,
+  });
+  const data = await res.json();
+
+  if (res?.status === 200) {
+    return data;
+  }
+};
