@@ -35,7 +35,7 @@ const LinkedInCard = ({ vacancies }: any) => {
               </div>
             </div>
             <div className={postStyle.content}>
-              <p className={postStyle.summary}>{post?.description}</p>
+              <p className={postStyle.summary}>{post?.requirements}</p>
             </div>
             <div className={postStyle.content__image}>
               <Image

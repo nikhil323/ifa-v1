@@ -49,7 +49,6 @@ const ProfileForm = () => {
     skills: studentData?.skills ? studentData?.skills : "",
     git_hub: studentData?.git_hub ? studentData?.git_hub : "",
     resume: studentData?.resume ? studentData?.resume : null,
-    cover_letter: studentData?.cover_letter ? studentData?.cover_letter : null,
     photo: studentData?.photo ? studentData?.photo : null,
   };
 
@@ -91,9 +90,6 @@ const ProfileForm = () => {
     } else if (name === "resume") {
       const prevUrl = URL.createObjectURL(file);
       setSelectedResume(prevUrl);
-    } else if (name === "cover_letter") {
-      const prevUrl = URL.createObjectURL(file);
-      setSelectedCV(prevUrl);
     }
   };
 
@@ -123,10 +119,6 @@ const ProfileForm = () => {
       for (let name in formData) {
         if (name === "photo" && typeof formData[name] === "string") {
         } else if (name === "resume" && typeof formData[name] === "string") {
-        } else if (
-          name === "cover_letter" &&
-          typeof formData[name] === "string"
-        ) {
         } else {
           formFields.append(name, formData[name]);
         }
@@ -170,7 +162,7 @@ const ProfileForm = () => {
                   ? formData?.resume
                   : selectedResume
                   ? selectedResume
-                  : "https://via.placeholder.com/150"
+                  : "http://via.placeholder.com/150"
               }
               width={150}
               height={150}
@@ -178,22 +170,16 @@ const ProfileForm = () => {
               className={profileStyles?.profileImgPrev}
             />
           </div>
-          <div>
+          {/* <div>
             <p className={profileStyles.text}>CV </p>
             <Image
-              src={
-                typeof formData?.cover_letter === "string"
-                  ? formData?.cover_letter
-                  : selectedCV
-                  ? selectedCV
-                  : "https://via.placeholder.com/150"
-              }
+              src={selectedCV ? selectedCV : "https://via.placeholder.com/150"}
               width={150}
               height={150}
               alt="cv image"
               className={profileStyles?.profileImgPrev}
             />
-          </div>
+          </div> */}
         </div>
         <div>
           <div className={profileStyles.twoInput}>
@@ -302,13 +288,13 @@ const ProfileForm = () => {
               <input
                 id="upload-resume"
                 type="file"
-                accept="image/*"
+                accept="image/*,.pdf"
                 placeholder="Upload resume"
                 name="resume"
                 onChange={handleChangeFiles}
               />
             </label>
-            <label
+            {/* <label
               htmlFor="upload-cv"
               className={`${profileStyles.fileFieldStyle}`}
             >
@@ -323,7 +309,7 @@ const ProfileForm = () => {
                 name="cover_letter"
                 onChange={handleChangeFiles}
               />
-            </label>
+            </label> */}
             {/* </div> */}
           </div>
           <div className={profileStyles.twoInput}>
