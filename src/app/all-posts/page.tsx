@@ -25,7 +25,7 @@ const AllPosts = async () => {
   const allVacancies = await getAllVacancy();
   return (
     <div className={`${postStyles.container}`}>
-      {/* <LSidebar /> */}
+      <LSidebar />
       <LinkedInCard vacancies={allVacancies} />
       <RSidebar />
     </div>

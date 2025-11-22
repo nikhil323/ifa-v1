@@ -29,13 +29,19 @@ const Footer = () => {
           <p>+977 54312</p>
         </div>
         <div className={footerStyles.links}>
-          <Link href="https://facebook.com" target="blank">Facebook</Link>
-          <Link href="https://linkedin.com" target="blank">Linked In</Link>
-          <Link href="https://twitter.com" target="blank">Twitter</Link>
+          <Link href="https://facebook.com" target="blank">
+            Facebook
+          </Link>
+          <Link href="https://linkedin.com" target="blank">
+            Linked In
+          </Link>
+          <Link href="https://twitter.com" target="blank">
+            Twitter
+          </Link>
         </div>
       </div>
       <div className={footerStyles.copyright}>
-        <h4>&#169; 2023 IFA. All rights reserved.</h4>
+        <h4>&#169; 2025 IFA. All rights reserved.</h4>
       </div>
     </footer>
   );

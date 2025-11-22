@@ -32,9 +32,9 @@ const VacancyForm = () => {
 
   //initialState
   const initialState = {
+    title: "",
     salary: "",
     duration: "",
-    description: "",
     location: "",
     requirements: "",
     contact_email: "",
@@ -84,13 +84,18 @@ const VacancyForm = () => {
     }
     //add organization key
     formFields.append("organization", orgId as string);
-    //add vacancy api call
-    const res = await addVacancy(formFields);
-    if (res) {
-      setShowSuccessMsg(true);
-      router.push("/posted-vacancy");
+    try {
+      //add vacancy api call
+      const res = await addVacancy(formFields);
+      if (res) {
+        setShowSuccessMsg(true);
+        router.push("/posted-vacancy");
+      }
+    } catch (e) {
+      console.log("error in vacancy create", e);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
   return (
     <div className={vacancyStyles.content}>
@@ -115,6 +120,15 @@ const VacancyForm = () => {
         </div>
         <div>
           <div className={vacancyStyles.twoInput}>
+            <input
+              type="text"
+              placeholder="Title"
+              name="title"
+              required
+              value={formData?.title}
+              onChange={(e) => handleInputChange(e, formData, setFormData)}
+              className={`${vacancyStyles.contactName}`}
+            />
             <input
               type="number"
               placeholder="Duration(in months)"
@@ -196,9 +210,9 @@ const VacancyForm = () => {
               name="requirements"
               required
               onChange={(e) => handleInputChange(e, formData, setFormData)}
-              className={`${vacancyStyles.contactName} ${vacancyStyles.textarea}`}
+              className={`${vacancyStyles.textarea}`}
             />
-            <textarea
+            {/* <textarea
               id="description"
               rows={7}
               required
@@ -207,7 +221,7 @@ const VacancyForm = () => {
               name="description"
               onChange={(e) => handleInputChange(e, formData, setFormData)}
               className={`${vacancyStyles.contactName} ${vacancyStyles.textarea}`}
-            />
+            /> */}
           </div>
         </div>
         <div className={vacancyStyles.twoInput}>
