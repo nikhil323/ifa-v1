@@ -1,5 +1,5 @@
 // export const baseUrl = "http://10.10.11.161:8002";
-export const baseUrl = "http://192.168.1.112:8002";
+export const baseUrl = "http://192.168.1.78:8002";
 // export const baseUrl = "https://paban.pythonanywhere.com";
 
 export const login = async (cred: any) => {
@@ -241,5 +241,22 @@ export const applyVacancy = async (body: any) => {
     return data;
   } else if (res?.status === 400) {
     return res?.status;
+  }
+};
+
+//update student resume
+export const updateStudentResume = async (body: any) => {
+  const accessToken = localStorage.getItem("accessToken");
+  const res = await fetch(`${baseUrl}/upload-resume/`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+    },
+    body: body,
+  });
+  const data = await res.json();
+
+  if (res?.status === 200) {
+    return data;
   }
 };

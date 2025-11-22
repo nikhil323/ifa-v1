@@ -9,7 +9,13 @@ import { handleInputChange } from "../utils/utilFunction";
 import Image from "next/image";
 import { altPhoneMsg, phoneMsg } from "../utils/constant";
 import PopUpMsg from "@/components/PopUpMsg/PopUpMsg";
-import { getStudentById, logout, updateStudent } from "../api/auth";
+import {
+  getStudentById,
+  logout,
+  updateStudent,
+  updateStudentResume,
+} from "../api/auth";
+import { ResumePreview } from "./ResumePreview";
 
 export interface error {
   phoneNo: string;
@@ -49,7 +55,6 @@ const ProfileForm = () => {
     skills: studentData?.skills ? studentData?.skills : "",
     git_hub: studentData?.git_hub ? studentData?.git_hub : "",
     resume: studentData?.resume ? studentData?.resume : null,
-    cover_letter: studentData?.cover_letter ? studentData?.cover_letter : null,
     photo: studentData?.photo ? studentData?.photo : null,
   };
 
@@ -90,10 +95,37 @@ const ProfileForm = () => {
       setSelectedProfile(prevUrl);
     } else if (name === "resume") {
       const prevUrl = URL.createObjectURL(file);
-      setSelectedResume(prevUrl);
-    } else if (name === "cover_letter") {
+      setSelectedResume(file);
+    }
+  };
+
+  const handleUploadPDF = async (e: any) => {
+    const { name } = e?.target;
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setFormData({
+      ...formData,
+      [name]: file,
+    });
+    if (name === "resume") {
       const prevUrl = URL.createObjectURL(file);
-      setSelectedCV(prevUrl);
+      setSelectedResume(file);
+    }
+
+    // upload it to backed api
+    const FileData = new FormData();
+    FileData.append("resume", file);
+
+    try {
+      const res = await updateStudentResume(FileData);
+
+      if (res) {
+        setShowSuccessMsg(true);
+        console.log("Upload success", res.data);
+      }
+    } catch (err) {
+      console.error("Upload failed", err);
     }
   };
 
@@ -122,11 +154,7 @@ const ProfileForm = () => {
 
       for (let name in formData) {
         if (name === "photo" && typeof formData[name] === "string") {
-        } else if (name === "resume" && typeof formData[name] === "string") {
-        } else if (
-          name === "cover_letter" &&
-          typeof formData[name] === "string"
-        ) {
+        } else if (name === "resume") {
         } else {
           formFields.append(name, formData[name]);
         }
@@ -164,36 +192,35 @@ const ProfileForm = () => {
           </div>
           <div>
             <p className={profileStyles.text}>Resume </p>
-            <Image
+            {/* <Image
               src={
                 typeof formData?.resume === "string"
                   ? formData?.resume
                   : selectedResume
                   ? selectedResume
-                  : "https://via.placeholder.com/150"
+                  : "http://via.placeholder.com/150"
               }
               width={150}
               height={150}
               alt="resume image"
               className={profileStyles?.profileImgPrev}
+              <
+            /> */}
+            <ResumePreview
+              selectedResume={selectedResume}
+              formData={formData}
             />
           </div>
-          <div>
+          {/* <div>
             <p className={profileStyles.text}>CV </p>
             <Image
-              src={
-                typeof formData?.cover_letter === "string"
-                  ? formData?.cover_letter
-                  : selectedCV
-                  ? selectedCV
-                  : "https://via.placeholder.com/150"
-              }
+              src={selectedCV ? selectedCV : "https://via.placeholder.com/150"}
               width={150}
               height={150}
               alt="cv image"
               className={profileStyles?.profileImgPrev}
             />
-          </div>
+          </div> */}
         </div>
         <div>
           <div className={profileStyles.twoInput}>
@@ -302,13 +329,13 @@ const ProfileForm = () => {
               <input
                 id="upload-resume"
                 type="file"
-                accept="image/*"
+                accept="image/*,.pdf"
                 placeholder="Upload resume"
                 name="resume"
-                onChange={handleChangeFiles}
+                onChange={handleUploadPDF}
               />
             </label>
-            <label
+            {/* <label
               htmlFor="upload-cv"
               className={`${profileStyles.fileFieldStyle}`}
             >
@@ -323,7 +350,7 @@ const ProfileForm = () => {
                 name="cover_letter"
                 onChange={handleChangeFiles}
               />
-            </label>
+            </label> */}
             {/* </div> */}
           </div>
           <div className={profileStyles.twoInput}>
