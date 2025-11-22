@@ -25,11 +25,12 @@ const MatchingJob = () => {
       <h3 className={styles.cardTitle}>Recommendations</h3>
       <div className={styles.mainContainer}>
         {vacancies?.map((vac: any) => {
+          console.log("the vacamcies------>", vacancies);
           return (
             <HomePageCard
               key={vac?.id}
               imageUrl={vac?.banner_img}
-              description={vac?.description}
+              requirements={vac?.requirements}
               id={vac?.id}
               score={vac?.similarity_score}
             />

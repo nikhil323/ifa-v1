@@ -39,7 +39,7 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
                 <HomePageCard
                   key={jobs?.id}
                   imageUrl={jobs?.banner_img}
-                  description={jobs?.description}
+                  requirements={jobs?.requirements}
                   id={jobs?.id}
                 />
               );
@@ -59,7 +59,6 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
             })}
           </>
         )}
-
       </div>
     </>
   );
@@ -67,7 +66,8 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
 
 export default TrendingJob;
 
-{/* <>
+{
+  /* <>
   {vacancies?.map((vac: any) => {
     return (
       <HomePageCard
@@ -78,4 +78,5 @@ export default TrendingJob;
       />
     );
   })}
-</>; */}
+</>; */
+}

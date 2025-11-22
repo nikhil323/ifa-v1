@@ -4,11 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { baseUrl } from "@/app/api/auth";
 
-const DetailsCard = ({ imageUrl, description, id, score }: any) => {
+const DetailsCard = ({ imageUrl, requirements, id, score }: any) => {
   const showLess = (num: number, desc: string) => {
-    return desc.slice(0, num) + "...";
+    return desc?.slice(0, num) + "...";
   };
-  console.log("the score is", score);
 
   return (
     <div className={styles.cardContainer}>
@@ -21,7 +20,7 @@ const DetailsCard = ({ imageUrl, description, id, score }: any) => {
         width={100}
         height={100}
       />
-      <p className={styles.description}>{showLess(80, description)}</p>
+      <p className={styles.description}>{showLess(80, requirements)}</p>
       <div>
         {score ? (
           <p
