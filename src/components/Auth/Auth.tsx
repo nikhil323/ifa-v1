@@ -1,8 +1,6 @@
 "use client";
 
 import React, { FormEventHandler, useEffect, useState } from "react";
-import { useFormState } from "react-dom";
-import { useFormStatus } from "react-dom";
 import { useRouter } from "next/navigation";
 
 //css
@@ -16,10 +14,7 @@ import {
   registerStudent,
   registerUser,
 } from "@/app/api/auth";
-import PopUpMsg, { apiRes, loginResProp } from "../PopUpMsg/PopUpMsg";
-
-//server action
-// import { handleSubmit } from "@/app/actions";
+import PopUpMsg, { loginResProp } from "../PopUpMsg/PopUpMsg";
 
 const Auth = () => {
   const router = useRouter();
@@ -93,6 +88,7 @@ const Auth = () => {
       setLoginRes({ ...res });
       if (res?.status === 200) {
         router.push("/");
+        router.refresh();
       }
     } else if (!hasAccount && company) {
       setLoadingRegister(true);
@@ -114,6 +110,7 @@ const Auth = () => {
       setLoadingRegister(false);
       if (organization) {
         router.push("/org-profile");
+        router.refresh();
       }
     } else if (!hasAccount && !company) {
       setLoadingRegister(true);

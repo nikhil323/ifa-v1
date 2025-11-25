@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 
 import HomePageCard from "./DetailsCard";
 import { getMatchingVacancy } from "@/app/api/auth";
+import { getUserStatus } from "@/app/utils/utilFunction";
 
 interface trendingJobsProps {
   internships: any[];
@@ -13,6 +14,7 @@ interface trendingJobsProps {
 
 const TrendingJob = ({ internships, title }: trendingJobsProps) => {
   const [vacancies, setVacancies] = useState([]);
+  const isAuth = getUserStatus();
   useEffect(() => {
     const func = async () => {
       try {
@@ -22,7 +24,9 @@ const TrendingJob = ({ internships, title }: trendingJobsProps) => {
         console.log("error fetching matching vacancies", e);
       }
     };
-    func();
+    if (!isAuth?.orgId) {
+      func();
+    }
   }, []);
   console.log("the matching vacancies are", vacancies);
   const filteredAndSortedInternships = internships
