@@ -1,5 +1,5 @@
-// export const baseUrl = "http://10.10.11.161:8002";
-export const baseUrl = "http://192.168.1.78:8002";
+export const baseUrl = "http://10.10.10.254:8002";
+// export const baseUrl = "http://192.168.1.70:8002";
 // export const baseUrl = "https://paban.pythonanywhere.com";
 
 export const login = async (cred: any) => {
@@ -235,7 +235,6 @@ export const applyVacancy = async (body: any) => {
     body: JSON.stringify(body),
   });
   const data = await res.json();
-  console.log("the res", res);
 
   if (res?.status === 201) {
     return data;
@@ -245,18 +244,54 @@ export const applyVacancy = async (body: any) => {
 };
 
 //update student resume
-export const updateStudentResume = async (body: any) => {
+export const updateStudentResume = async (id: number) => {
   const accessToken = localStorage.getItem("accessToken");
-  const res = await fetch(`${baseUrl}/upload-resume/`, {
+  const res = await fetch(`${baseUrl}/upload-resume/${id}`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${accessToken ? accessToken : ""}`,
     },
-    body: body,
   });
   const data = await res.json();
 
   if (res?.status === 200) {
     return data;
+  }
+};
+
+// export const applyVacancy = async (body: any) => {
+//   const accessToken = localStorage.getItem("accessToken");
+//   const res = await fetch(`${baseUrl}/vacancy/vacancy-submit`, {
+//     method: "POST",
+//     headers: {
+//       Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+//     },
+//     body: body,
+//   });
+//   const data = await res.json();
+//   if (res?.status === 201) {
+//     return data;
+//   }
+// };
+
+export const getUniqueSkills = async (vacancyId: number) => {
+  const accessToken = localStorage.getItem("accessToken");
+
+  try {
+    const res = await fetch(`${baseUrl}/vacancy/shortlist/${vacancyId}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${accessToken ? accessToken : ""}`,
+      },
+    });
+
+    const data = await res.json();
+    if (res?.status === 200) {
+      return data;
+    }
+    console.log("the response=====>", data);
+  } catch (e) {
+    console.log("error fetching most in demand", e);
   }
 };

@@ -4,8 +4,40 @@ import Image from "next/image";
 import { link } from "fs";
 import ApplyBtn from "@/app/vacancy-detail/[id]/ApplyBtn";
 
-const LinkedInCard = ({ vacancies }: any) => {
+const LinkedInCard = ({ vacancies, loading }: any) => {
   console.log("the vacancies list in linked in card", vacancies);
+  if (loading) {
+    return (
+      <p
+        className={postStyle.container}
+        style={{
+          fontSize: "1.6rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+        }}
+      >
+        Loading...
+      </p>
+    );
+  }
+  if (vacancies?.length === 0) {
+    return (
+      <p
+        className={postStyle.container}
+        style={{
+          fontSize: "1.6rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+        }}
+      >
+        No vacancies found at the moment for applied filters.
+      </p>
+    );
+  }
   return (
     <article className={postStyle.container}>
       {vacancies?.map((post: any) => {
@@ -35,6 +67,16 @@ const LinkedInCard = ({ vacancies }: any) => {
               </div>
             </div>
             <div className={postStyle.content}>
+              <p
+                style={{
+                  color: "#40c2a6",
+                  fontWeight: "bold",
+                  fontSize: "1.8rem",
+                  marginBottom: "5px",
+                }}
+              >
+                {post?.title}
+              </p>
               <p className={postStyle.summary}>{post?.requirements}</p>
             </div>
             <div className={postStyle.content__image}>

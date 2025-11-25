@@ -7,7 +7,7 @@ const RSidebar = () => {
   return (
     <div className={rsidebarStyles.container}>
       <div className={rsidebarStyles.inner}>
-        <h4 className={rsidebarStyles.title}>Points to ponder:</h4>
+        <h4 className={rsidebarStyles.title}>Points to Consider</h4>
         <ul className={rsidebarStyles.points}>
           <li>Carefully go through vacancy post and organization</li>
           <li>Research about organization</li>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import profileStyles from "./profileStyles.module.css";
+import Link from "next/link";
 
 export const ResumePreview = ({ selectedResume, formData }: any) => {
   // Case 1: New file selected (File object)
@@ -34,7 +35,10 @@ export const ResumePreview = ({ selectedResume, formData }: any) => {
 
     if (url.endsWith(".pdf")) {
       return (
-        <embed src={url} type="application/pdf" width="150" height="150" />
+        // <embed src={url} type="application/pdf" width="150" height="150" />
+        <Link href={url} style={{}} target="_blank" rel="noopener noreferrer">
+          View CV
+        </Link>
       );
     } else {
       return (

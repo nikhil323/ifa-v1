@@ -37,6 +37,9 @@ const ProfileForm = () => {
   const [studentData, setStudentData] = useState<any>(null);
 
   useEffect(() => {
+    if (!stdId) {
+      return;
+    }
     const fetchStd = async () => {
       const stdData = await getStudentById(stdId as string | number);
       setStudentData(stdData);
@@ -335,6 +338,22 @@ const ProfileForm = () => {
                 onChange={handleUploadPDF}
               />
             </label>
+            <label
+              htmlFor="upload-photo"
+              className={`${profileStyles.fileFieldStyle}`}
+            >
+              {formData?.photo?.name
+                ? formData?.photo?.name.substring(0, 10) + "..."
+                : "Upload photo"}
+              <input
+                type="file"
+                id="upload-photo"
+                accept="image/*"
+                placeholder="Choose photo"
+                name="photo"
+                onChange={handleChangeFiles}
+              />
+            </label>
             {/* <label
               htmlFor="upload-cv"
               className={`${profileStyles.fileFieldStyle}`}
@@ -353,26 +372,11 @@ const ProfileForm = () => {
             </label> */}
             {/* </div> */}
           </div>
-          <div className={profileStyles.twoInput}>
+          {/* <div className={profileStyles.twoInput}> */}
             {/* <div style={{ margin: "0", padding: "0" }}> */}
-            <label
-              htmlFor="upload-photo"
-              className={`${profileStyles.fileFieldStyle}`}
-            >
-              {formData?.photo?.name
-                ? formData?.photo?.name.substring(0, 10) + "..."
-                : "Upload photo"}
-              <input
-                type="file"
-                id="upload-photo"
-                accept="image/*"
-                placeholder="Choose photo"
-                name="photo"
-                onChange={handleChangeFiles}
-              />
-            </label>
+
             {/* </div> */}
-            <input
+            {/* <input
               className={`${profileStyles.contactName}`}
               style={{
                 display: "hidden",
@@ -380,8 +384,8 @@ const ProfileForm = () => {
                 cursor: "none",
               }}
               disabled
-            ></input>
-          </div>
+            ></input> */}
+          {/* </div> */}
           <button
             name="submit"
             value="submit"

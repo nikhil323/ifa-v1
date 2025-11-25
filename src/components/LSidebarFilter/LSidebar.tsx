@@ -3,12 +3,36 @@
 import React, { useState } from "react";
 import lSidebarStyles from "./lSidebar.module.css";
 
-const Sidebar = () => {
+const Sidebar = ({ setFilters }: any) => {
+  const [search, setSearch] = useState("");
   const [location, setLocation] = useState("");
+  const [category, setCategory] = useState("");
   const [duration, setDuration] = useState("6");
+  const [verified, setVerified] = useState(false);
 
-  const handleLocationChange = (e: any) => {
-    setLocation(e.target?.value);
+  const applyFilters = () => {
+    setFilters({
+      search,
+      location,
+      job_type: category,
+      duration,
+      is_verified: verified,
+    });
+  };
+
+  const clearFilters = () => {
+    setFilters({
+      search: "",
+      location: "",
+      job_type: "",
+      duration: "6",
+      verified: false,
+    });
+    setSearch("");
+    setLocation("");
+    setCategory("");
+    setDuration("6");
+    setVerified(false);
   };
 
   return (
@@ -20,10 +44,11 @@ const Sidebar = () => {
         <div className={lSidebarStyles.searchContainer}>
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search by title/location/requirements/job type"
             className={lSidebarStyles.searchInput}
+            onChange={(e) => setSearch(e?.target?.value)}
           />
-          <button className={lSidebarStyles.searchButton}>Search</button>
+          {/* <button className={lSidebarStyles.searchButton}>Search</button> */}
         </div>
 
         {/* Horizontal Line */}
@@ -39,7 +64,7 @@ const Sidebar = () => {
             id="location"
             className={lSidebarStyles.selectInput}
             value={location}
-            onChange={handleLocationChange}
+            onChange={(e) => setLocation(e.target.value)}
           >
             <option value="" selected disabled>
               Select location
@@ -50,64 +75,31 @@ const Sidebar = () => {
             <option value="biratnagar">Biratnagar</option>
           </select>
         </div>
-        {/* <hr className={lSidebarStyles.horizontalLine} /> */}
 
-        {/* Type Radio Buttons */}
-        {/* <div className={lSidebarStyles.filterOption}>
-          <div className={lSidebarStyles.filterOption__time}>
-            <label htmlFor="full-time">Full-Time : </label>
-            <input
-              type="radio"
-              id="full-time"
-              name="internship-type"
-              value="full-time"
-              className={lSidebarStyles.rangeStyle}
-            />
-          </div>
-          <div className={lSidebarStyles.filterOption__time}>
-            <label htmlFor="part-time">Part-Time : </label>
-            <input
-              type="radio"
-              id="part-time"
-              name="internship-type"
-              value="part-time"
-              className={lSidebarStyles.rangeStyle}
-            />
-          </div>
-        </div> */}
-
-        {/* <hr className={lSidebarStyles.horizontalLine} /> */}
-
-        {/* Sort By period */}
-        {/* <div className={lSidebarStyles.dropdownOption}>
-          <select id="sort-by" className={lSidebarStyles.selectInput}>
-            <option value="" selected disabled>
-              Sort by
-            </option>
-            <option value="all">All</option>
-            <option value="relevance">Most Relevant</option>
-            <option value="views">Most Viewed</option>
-            <option value="latest">Latest</option>
-          </select>
-        </div> */}
         <hr className={lSidebarStyles.horizontalLine} />
 
         {/* Sort By category */}
         <div className={lSidebarStyles.dropdownOption}>
-          {/* <label htmlFor="sort-by">Categories:</label> */}
-          <select id="sort-by" className={lSidebarStyles.selectInput}>
+          <select
+            id="sort-by"
+            className={lSidebarStyles.selectInput}
+            onChange={(e) => setCategory(e.target.value)}
+            value={category}
+          >
             <option value="" selected disabled>
               Categories
             </option>
             <option value="all">All</option>
-            <option value="relevance">Developer</option>
-            <option value="views">Designer</option>
-            <option value="latest">Marketing</option>
-            <option value="latest">Sales Person</option>
-            <option value="latest">Cook</option>
-            <option value="latest">Delivery</option>
-            <option value="latest">Data Entry</option>
-            <option value="latest">Content Writer</option>
+            <option value="frontendDeveloper">Frontend Developer</option>
+            <option value="backendDeveloper">Backend Developer</option>
+            <option value="cook">Cook</option>
+            <option value="qa">QA</option>
+            <option value="accountant">Accountant</option>
+            <option value="designer">Designer</option>
+            <option value="salesMan">Sales Man</option>
+            <option value="assistantManager">Assistant Manager</option>
+            <option value="DBA">DBA</option>
+            <option value="projectManager">Project Manager</option>
           </select>
         </div>
         <hr className={lSidebarStyles.horizontalLine} />
@@ -131,30 +123,6 @@ const Sidebar = () => {
           </div>
         </div>
 
-        {/* <hr className={lSidebarStyles.horizontalLine} />
-        <div className={lSidebarStyles.paymentFilterContainer}>
-          <div className={lSidebarStyles.paymentFilter}>
-            <label htmlFor="paid">Paid:</label>
-            <input
-              type="checkbox"
-              id="paid"
-              name="paid"
-              value="paid"
-              className={lSidebarStyles.rangeStyle}
-            />
-          </div>
-
-          <div className={lSidebarStyles.paymentFilter}>
-            <label htmlFor="remote">Remote Work:</label>
-            <input
-              type="checkbox"
-              id="remote"
-              name="remote"
-              value="remote"
-              className={lSidebarStyles.rangeStyle}
-            />
-          </div>
-        </div> */}
         <hr className={lSidebarStyles.horizontalLine} />
 
         {/* Company status */}
@@ -167,12 +135,25 @@ const Sidebar = () => {
               name="verified"
               value="verified"
               className={lSidebarStyles.rangeStyle}
+              onChange={(e) => setVerified(e?.target?.checked)}
+              checked={verified}
             />
           </div>
         </div>
         {/* filter button */}
         <div className={lSidebarStyles.filterBtn}>
-          <input type="button" value="Filter" name="filter" />
+          <input
+            type="button"
+            value="Clear Filter"
+            name="clearFilter"
+            onClick={clearFilters}
+          />
+          <input
+            type="button"
+            value="Filter"
+            name="filter"
+            onClick={applyFilters}
+          />
         </div>
       </div>
     </div>
